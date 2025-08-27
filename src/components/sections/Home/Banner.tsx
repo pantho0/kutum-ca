@@ -4,10 +4,35 @@ import Image from "next/image";
 import heroImg from "../../../../public/images/hero-1.png";
 
 import { useLocale, useTranslations } from "next-intl";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Banner = () => {
   const t = useTranslations("Homepage");
   const locale = useLocale();
+
+  useGSAP(() => {
+    // Initial fade in
+    gsap.fromTo(
+      ".custom-animation",
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 0.5,
+        ease: "power2.out",
+      }
+    );
+
+    // Continuous rotation
+    gsap.to(".custom-animation", {
+      rotation: 360,
+      duration: 20,
+      ease: "linear",
+      repeat: -1,
+      transformOrigin: "center",
+    });
+  }, []);
+
   return (
     <section className="w-full text-white min-h-dvh relative ">
       <div className="container mx-auto  min-h-screen max-w-6xl items-center px-4 py-12 lg:px-8 space-y-6">
@@ -29,7 +54,7 @@ const Banner = () => {
           </p>
         </div>
         <div className="hidden md:block absolute top-1/2 right-26 transform -translate-y-1/2">
-          <Image src={heroImg} alt="hero" />
+          <Image src={heroImg} alt="hero" className="custom-animation" />
         </div>
       </div>
     </section>

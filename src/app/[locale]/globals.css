@@ -130,3 +130,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components{
+  .custom-animation{
+    @apply opacity-0
+  }
+}
