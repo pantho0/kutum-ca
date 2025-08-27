@@ -1,27 +1,81 @@
 import Image from "next/image";
 import logo from "../../../public/images/logo.png";
-
 import { useTranslations } from "next-intl";
-import { LanguageSwitcher } from "../LanguageSwitcherSelect";
+import LocaleSwitch from "../LocaleSwitch";
+import { Button } from "./button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./dropdown-menu";
+import { Menu } from "lucide-react";
 
 const Navbar = () => {
   const t = useTranslations("navigations");
+  const navItems = [
+    { key: "home", label: t("Home") },
+    { key: "menu", label: t("Menu") },
+    { key: "reservation", label: t("Reservation") },
+    { key: "about", label: t("About") },
+    { key: "contact", label: t("Contact") },
+  ];
+
   return (
     <nav className="flex justify-between max-w-6xl mx-auto p-4 items-center">
       <div>
-        <Image width={200} height={150} src={logo} alt="logo" />
+        <Image
+          width={200}
+          height={150}
+          src={logo}
+          alt="logo"
+          className="md:w-[200px] w-[120px]"
+        />
       </div>
-      <div className="flex gap-2 items-center">
-        <ul className="flex gap-5 fontl-medium text-xl hover:cursor-pointer items-center">
-          <li className="hover:text-primary">{t("Home")}</li>
-          <li className="hover:text-primary">{t("Menu")}</li>
-          <li className="hover:text-primary">{t("Reservation")}</li>
-          <li className="hover:text-primary">{t("About")}</li>
-          <li className="hover:text-primary">{t("Contact")}</li>
+
+      {/* Desktop Navigation */}
+      <div className="hidden md:flex gap-2 items-center">
+        <ul className="flex gap-5 font-medium text-xl hover:cursor-pointer items-center">
+          {navItems.map((item) => (
+            <li key={item.key} className="hover:text-primary">
+              {item.label}
+            </li>
+          ))}
         </ul>
         <div>
-          <LanguageSwitcher />
+          <LocaleSwitch />
         </div>
+      </div>
+
+      {/* Mobile Navigation */}
+      <div className="flex md:hidden items-center gap-2">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon" className="md:hidden">
+              <Menu className="h-6 w-6" />
+              <span className="sr-only">Toggle menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            align="end"
+            className="w-56 bg-background border-border p-2"
+          >
+            {navItems.map((item) => (
+              <DropdownMenuItem
+                key={item.key}
+                className="text-base cursor-pointer p-3 hover:bg-accent hover:text-accent-foreground text-foreground"
+              >
+                {item.label}
+              </DropdownMenuItem>
+            ))}
+            <div className="border-t border-border mt-2 pt-2">
+              <div className="flex text-foreground items-center justify-between px-3 py-2">
+                <p>Language:</p>
+                <LocaleSwitch />
+              </div>
+            </div>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </nav>
   );
