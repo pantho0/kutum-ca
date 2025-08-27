@@ -5,5 +5,10 @@
         "Reservation" :"Réservation",
         "About" :"A propos",
         "Contact" :"Contact"
+    },
+
+    "Homepage":{
+        "BannerTitle":"Parfaitement lumineux à chaque bouchée",
+        "BannerDescription":"Nous avons une passion propre pour la cuisine. L'amour est l'ingrédient secret qui rend tous nos repas plus délicieux et magiques."
     }
 }

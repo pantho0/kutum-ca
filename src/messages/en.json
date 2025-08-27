@@ -5,5 +5,10 @@
         "Reservation" :"Reservation",
         "About" :"About",
         "Contact" :"Contact"
+    },
+
+    "Homepage":{
+        "BannerTitle":"Perfectly Light In Every Bite",
+        "BannerDescription":"We have a proper passion for cooking. Love is the secret ingredient that makes all our meals taste better and magical."
     }
 }
