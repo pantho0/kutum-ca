@@ -135,4 +135,10 @@
   .custom-animation{
     @apply opacity-0
   }
+  .title-animation{
+    @apply opacity-0
+  }
+  .desc-animation{
+    @apply opacity-0
+  }
 }
