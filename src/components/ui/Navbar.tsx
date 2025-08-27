@@ -1,13 +1,8 @@
 import Image from "next/image";
 import logo from "../../../public/images/logo.png";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-} from "@/components/ui/select";
-import { Globe } from "lucide-react";
+
 import { useTranslations } from "next-intl";
+import { LanguageSwitcher } from "../LanguageSwitcherSelect";
 
 const Navbar = () => {
   const t = useTranslations("navigations");
@@ -25,15 +20,7 @@ const Navbar = () => {
           <li className="hover:text-primary">{t("Contact")}</li>
         </ul>
         <div>
-          <Select>
-            <SelectTrigger size="default" className="w-16 border-0 mt-[3px]">
-              <Globe />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="light">English</SelectItem>
-              <SelectItem value="dark">French</SelectItem>
-            </SelectContent>
-          </Select>
+          <LanguageSwitcher />
         </div>
       </div>
     </nav>
