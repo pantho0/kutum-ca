@@ -1,0 +1,9 @@
+{
+    "navigations":{
+        "Home" :"Home",
+        "Menu" :"Menu",
+        "Reservation" :"Reservation",
+        "About" :"About",
+        "Contact" :"Contact"
+    }
+}
