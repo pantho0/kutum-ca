@@ -23,20 +23,23 @@ const ShortBio = () => {
           trigger: container.current,
           start: "top 60%",
           end: "bottom 80%",
-          scrub: 1,
+          // scrub: 1,
+          toggleActions: "play pause resume reset",
         },
       });
       tl.from(".bio-image-1", {
         opacity: 0,
         x: -100,
-        ease: "power2.out",
+        delay: 0.3,
+        ease: "power1.inOut",
       });
       tl.from(
         ".bio-image-2",
         {
           opacity: 0,
           x: 200,
-          ease: "power2.out",
+          delay: 0.4,
+          ease: "power1.inOut",
         },
         "<"
       );
@@ -47,7 +50,7 @@ const ShortBio = () => {
   return (
     <section
       ref={container}
-      className="container mx-auto px-5 md:px-0 max-w-6xl grid grid-cols-1 items-center gap-12 py-3 text-white lg:grid-cols-2 lg:gap-20 lg:py-28"
+      className="container mx-auto px-5 md:px-0 max-w-6xl grid grid-cols-1 items-center gap-12 py-3 text-white lg:grid-cols-2 lg:gap-20 lg:py-28 bio-animation"
     >
       {/* Left Column: Image Composition */}
       <div className="relative h-[550px] w-full sm:h-[650px] lg:h-[600px]">
