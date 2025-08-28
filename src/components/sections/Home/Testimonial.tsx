@@ -36,7 +36,7 @@ const Testimonials = () => {
       style={{
         // Using an inline style for the background image URL is a common and easy way
         backgroundImage: `
-          linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+          linear-gradient(180deg, #0B1315 0%, rgba(11, 19, 21, 0.7) 49.35%, #0B1315 100%),
           url('/images/testimonialbg.png')
         `,
       }}
@@ -53,7 +53,7 @@ const Testimonials = () => {
         </div>
 
         {/* Main Heading */}
-        <h2 className="text-4xl font-elsie font-medium leading-tight sm:text-5xl lg:text-5xl mb-12">
+        <h2 className="text-4xl font-elsie text-white font-medium leading-tight sm:text-5xl lg:text-5xl mb-12">
           The Reviews Of Customers When Coming To Our Restaurant!
         </h2>
 
@@ -70,7 +70,7 @@ const Testimonials = () => {
               <CarouselItem key={index}>
                 <div className="p-1">
                   <div className="flex flex-col items-center justify-center space-y-6">
-                    <blockquote className="text-lg md:text-xl text-neutral-300 font-elsie leading-relaxed max-w-3xl">
+                    <blockquote className="text-lg md:text-xl text-white font-elsie leading-relaxed max-w-3xl">
                       “{testimonial.quote}”
                     </blockquote>
                     <cite className="text-lg font-elsie text-primary not-italic tracking-wider">
