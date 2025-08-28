@@ -40,7 +40,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
+  --color-secondary: #778588;
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: #FFDE9F;
   --color-popover-foreground: var(--popover-foreground);
@@ -122,6 +122,12 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+body {
+  width: 100dvw;
+  overflow-x: hidden;
+
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -140,5 +146,13 @@
   }
   .desc-animation{
     @apply opacity-0
+  }
+  .first-vdo-wrapper{
+    .first-vdo{
+      @apply size-full object-cover md:[object-position:50%_center] [object-position:75%_center]
+    }
+  }
+  .banner-section{
+    @apply w-dvw h-dvh relative overflow-hidden;
   }
 }
