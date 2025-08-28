@@ -152,7 +152,5 @@ body {
       @apply size-full object-cover md:[object-position:50%_center] [object-position:75%_center]
     }
   }
-  .banner-section{
-    @apply w-dvw h-dvh relative overflow-hidden;
-  }
+ 
 }
