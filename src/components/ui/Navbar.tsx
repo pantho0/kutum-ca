@@ -10,15 +10,16 @@ import {
   DropdownMenuTrigger,
 } from "./dropdown-menu";
 import { Menu } from "lucide-react";
+import Link from "next/link";
 
 const Navbar = () => {
   const t = useTranslations("navigations");
   const navItems = [
-    { key: "home", label: t("Home") },
-    { key: "menu", label: t("Menu") },
-    { key: "reservation", label: t("Reservation") },
-    { key: "about", label: t("About") },
-    { key: "contact", label: t("Contact") },
+    { key: "/", label: t("Home") },
+    { key: "/menu", label: t("Menu") },
+    { key: "/reservation", label: t("Reservation") },
+    { key: "/about", label: t("About") },
+    { key: "/contact", label: t("Contact") },
   ];
 
   return (
@@ -38,7 +39,7 @@ const Navbar = () => {
         <ul className="flex gap-5 font-medium text-xl hover:cursor-pointer items-center">
           {navItems.map((item) => (
             <li key={item.key} className="hover:text-primary">
-              {item.label}
+              <Link href={item.key}>{item.label}</Link>
             </li>
           ))}
         </ul>

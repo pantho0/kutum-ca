@@ -1,7 +1,12 @@
+import Exceptional from "@/components/sections/About/Exceptional";
 import React from "react";
 
 function About() {
-  return <div>About</div>;
+  return (
+    <>
+      <Exceptional />
+    </>
+  );
 }
 
 export default About;
