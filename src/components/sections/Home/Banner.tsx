@@ -62,7 +62,7 @@ const Banner = () => {
 
   return (
     <section className="w-full text-white min-h-dvh relative banner-section">
-      <div className="container mx-auto  min-h-screen max-w-6xl items-center px-4 py-12 lg:px-8 space-y-6">
+      <div className="container mx-auto  min-h-screen max-w-6xl items-center px-4 py-10 lg:px-8 space-y-6">
         <div>
           <h2
             className={`font-elsie w-full md:w-[90%] z-50 title-animation ${
@@ -88,6 +88,14 @@ const Banner = () => {
           <p className="text-lg font-semibold font-sans text-center text-[#99A9AD] md:text-left desc-animation md:max-w-1/2">
             {t("BannerDescription")}
           </p>
+        </div>
+        <div className="flex justify-center md:justify-start md:ml-30">
+          <Button
+            size="lg"
+            className="md:text-left desc-animation md:max-w-1/2 text-black w-42 h-16 rounded-none hover:bg-secondary hover:text-foreground hover:border-1 hover:border-primary hover:cursor-pointer"
+          >
+            Explore Menu
+          </Button>
         </div>
         <div className="hidden md:block">
           <BannerPlate />
