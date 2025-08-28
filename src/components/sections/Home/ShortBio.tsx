@@ -1,70 +1,75 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react"; // 1. Import useRef
 import { Star, Store, Soup } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const Button = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) => (
-  <button
-    className={`inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background ${className}`}
-  >
-    {children}
-  </button>
-);
-
-const Image = ({
-  src,
-  alt,
-  className,
-  width,
-  height,
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-  width: number;
-  height: number;
-}) => (
-  // eslint-disable-next-line @next/next/no-img-element
-  <img
-    src={src}
-    alt={alt}
-    className={className}
-    style={{ width: `${width}px`, height: `${height}px` }}
-    loading="lazy"
-  />
-);
+const img1 = "/images/shortbio1.webp";
+const img2 = "/images/shortbio2.webp";
 
 const ShortBio = () => {
   const t = useTranslations("ShortBio");
+  const container = useRef(null);
+
+  useGSAP(
+    () => {
+      gsap.registerPlugin(ScrollTrigger);
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 60%",
+          end: "bottom 80%",
+          scrub: 1,
+        },
+      });
+      tl.from(".bio-image-1", {
+        opacity: 0,
+        x: -100,
+        ease: "power2.out",
+      });
+      tl.from(
+        ".bio-image-2",
+        {
+          opacity: 0,
+          x: 200,
+          ease: "power2.out",
+        },
+        "<"
+      );
+    },
+    { scope: container }
+  );
+
   return (
-    <section className="container mx-auto px-5 md:px-0 max-w-6xl grid grid-cols-1 items-center gap-12 py-3 text-white lg:grid-cols-2 lg:gap-20 lg:py-28">
+    <section
+      ref={container}
+      className="container mx-auto px-5 md:px-0 max-w-6xl grid grid-cols-1 items-center gap-12 py-3 text-white lg:grid-cols-2 lg:gap-20 lg:py-28"
+    >
       {/* Left Column: Image Composition */}
       <div className="relative h-[550px] w-full sm:h-[650px] lg:h-[600px]">
-        {/* Burger Image */}
+        {/* Image-1 */}
         <div className="absolute left-0 top-0 h-2/5 w-2/3 transform transition-transform duration-500 hover:scale-105">
           <Image
-            src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=800"
+            src={img1}
             alt="A delicious gourmet burger with cheese and lettuce"
             width={400}
             height={300}
-            className="h-full w-full rounded-lg object-cover shadow-lg"
+            className="h-full w-full rounded-lg object-cover shadow-lg bio-image-1" // The selector is still here
           />
         </div>
 
-        {/* Chef Image */}
+        {/* Image-2*/}
         <div className="absolute bottom-0 right-0 h-4/5 w-4/5 transform transition-transform duration-500 hover:scale-105">
           <Image
-            src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?q=80&w=800"
+            src={img2}
             alt="A chef carefully preparing fresh lettuce on a wooden board"
             width={500}
             height={600}
-            className="h-full w-full rounded-lg object-cover shadow-2xl"
+            className="h-full w-full rounded-lg object-cover shadow-2xl bio-image-2"
           />
         </div>
       </div>
@@ -120,7 +125,7 @@ const ShortBio = () => {
         </div>
 
         <div className="pt-2 flex justify-center md:justify-start">
-          <Button className="bg-primary px-8 py-5 text-base font-bold text-black hover:bg-secondary hover:border-1 hover:border-primary rounded-none hover:text-foreground hover:cursor-pointer">
+          <Button className="bg-primary px-8 py-8 text-base text-black hover:bg-secondary hover:border-1 hover:border-primary rounded-none hover:text-foreground hover:cursor-pointer">
             {t("ExploreUs")}
           </Button>
         </div>
