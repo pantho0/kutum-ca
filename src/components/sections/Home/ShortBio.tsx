@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import { Star, Store, Soup } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const Button = ({
   className,
@@ -15,8 +17,6 @@ const Button = ({
   </button>
 );
 
-// Mock Image component. In a real Next.js app, you would use `next/image`.
-// This is a placeholder to make the component runnable in this environment.
 const Image = ({
   src,
   alt,
@@ -41,6 +41,7 @@ const Image = ({
 );
 
 const ShortBio = () => {
+  const t = useTranslations("ShortBio");
   return (
     <section className="container mx-auto px-5 md:px-0 max-w-6xl grid grid-cols-1 items-center gap-12 py-3 text-white lg:grid-cols-2 lg:gap-20 lg:py-28">
       {/* Left Column: Image Composition */}
@@ -73,20 +74,17 @@ const ShortBio = () => {
         <div className="flex items-center space-x-2 text-primary">
           <Star size={18} fill="currentColor" />
           <h3 className="text-sm font-sans uppercase md:text-2xl">
-            Our Restaurant
+            {t("SectionTitle")}
           </h3>
           <Star size={18} fill="currentColor" />
         </div>
 
         <h2 className="text-4xl font-elsie font-medium leading-tight sm:text-5xl lg:text-6xl">
-          For Every Special Occasion There&apos;s Heritaste
+          {t("Title")}
         </h2>
 
         <p className="text-neutral-400 md:text-lg font-sans">
-          Diam leo massa pellentesque a neque turpis cum mi gravida. Amet massa
-          adipiscing mi dictum urna commodo. Fringilla ipsum etiam habitasse
-          dolor lacus viverra. Leo ipsum libero at amet ipsum lacus, amet non
-          leo nisi, turpis nec.
+          {t("Description")}
         </p>
 
         <div className="space-y-6 pt-4">
@@ -97,11 +95,10 @@ const ShortBio = () => {
             </div>
             <div>
               <h4 className="text-3xl font-elsie text-primary">
-                Quiet Environment
+                {t("point1")}
               </h4>
               <p className="mt-1 text-neutral-400 text-lg">
-                Objectively transition virtual functionalities via
-                enterprise-wide benefits.
+                {t("point1Description")}
               </p>
             </div>
           </div>
@@ -113,12 +110,10 @@ const ShortBio = () => {
             </div>
             <div>
               <h4 className="text-3xl font-elsie text-primary">
-                Hygienic Food
+                {t("point2")}
               </h4>
               <p className="mt-1 text-neutral-400 text-lg">
-                Objectively transition virtual functionalities via
-                enterprise-wide benefits. Sagittis molestie nulla morbi
-                ultrices.
+                {t("point2Description")}
               </p>
             </div>
           </div>
@@ -126,7 +121,7 @@ const ShortBio = () => {
 
         <div className="pt-2 flex justify-center md:justify-start">
           <Button className="bg-primary px-8 py-5 text-base font-bold text-black hover:bg-secondary hover:border-1 hover:border-primary rounded-none hover:text-foreground hover:cursor-pointer">
-            Explore Us
+            {t("ExploreUs")}
           </Button>
         </div>
       </div>
