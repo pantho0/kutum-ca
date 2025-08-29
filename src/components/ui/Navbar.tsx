@@ -66,7 +66,7 @@ const Navbar = () => {
                 key={item.key}
                 className="text-base cursor-pointer p-3 hover:bg-accent hover:text-accent-foreground text-foreground"
               >
-                {item.label}
+                <Link href={item.key}>{item.label}</Link>
               </DropdownMenuItem>
             ))}
             <div className="border-t border-border mt-2 pt-2">
