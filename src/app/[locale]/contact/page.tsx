@@ -70,7 +70,7 @@ const Contact = () => {
   );
 
   return (
-    <section ref={container} className="bg-black text-white py-20 md:py-28">
+    <section ref={container} className="text-white py-20 md:py-28">
       <div className="container mx-auto max-w-7xl px-5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Column: Form */}
