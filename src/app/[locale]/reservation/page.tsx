@@ -63,7 +63,7 @@ const Reservation = () => {
       className="text-white py-20 md:py-32 bg-cover bg-center"
       style={{
         backgroundImage: `
-          linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          linear-gradient(180deg, #0B1315 0%, rgba(11, 19, 21, 0.7) 49.35%, #0B1315 100%),
           url('/images/Reservation.png')
         `, // Replace with your background image path
       }}
