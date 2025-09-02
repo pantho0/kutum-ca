@@ -35,7 +35,7 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Navigation */}
-      <div className="hidden md:flex gap-2 items-center">
+      <div className="hidden md:hidden lg:flex gap-2 items-center">
         <ul className="flex gap-5 font-medium text-xl hover:cursor-pointer items-center">
           {navItems.map((item) => (
             <li key={item.key} className="hover:text-primary">
@@ -49,10 +49,10 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="flex md:hidden items-center gap-2">
+      <div className="flex md:flex lg:hidden items-center gap-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden">
+            <Button variant="ghost" size="icon" className="md:block lg:hidden">
               <Menu className="h-6 w-6" />
               <span className="sr-only">Toggle menu</span>
             </Button>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import {
@@ -143,6 +144,7 @@ const MenuSection = () => {
   useEffect(() => {
     if (menuGridRef.current) {
       gsap.fromTo(
+        // @ts-ignore
         menuGridRef.current.children,
         { opacity: 0, y: 30 },
         {

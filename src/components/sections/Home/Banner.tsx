@@ -62,21 +62,21 @@ const Banner = () => {
 
   return (
     <section className="w-full text-white min-h-dvh relative banner-section">
-      <div className="container mx-auto  min-h-screen max-w-6xl items-center px-4 py-10 lg:px-8 space-y-6">
+      <div className="container mx-auto  min-h-screen max-w-6xl items-center px-4 py-10 lg:px-8 space-y-6 relative overflow-hidden">
         <div>
           <h2
             className={`font-elsie w-full md:w-[90%] z-50 title-animation ${
               locale === "fr"
-                ? "md:text-7xl md:text-left text-[28px] text-center"
-                : "md:text-8xl md:text-left text-4xl text-center"
+                ? "md:text-7xl md:text-center lg:text-left text-[28px] text-center"
+                : "md:text-8xl md:text-center lg:text-left text-4xl text-center"
             }`}
           >
             {t("BannerTitle")}
           </h2>
         </div>
-        <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0">
-          <div className="mr-4 hidden md:block h-px w-26 bg-[#F5DEB3]"></div>
-          <div className="block md:hidden">
+        <div className="flex flex-col lg:flex-row items-center space-y-6 md:space-y-0">
+          <div className="mr-4 hidden md:hidden lg:block h-px w-26 bg-[#F5DEB3]"></div>
+          <div className="block md:block lg:hidden">
             <Image
               src={heroImg}
               alt="hero"
@@ -85,19 +85,19 @@ const Banner = () => {
               className="custom-animation relative z-0"
             />
           </div>
-          <p className="text-lg font-semibold font-sans text-center text-[#99A9AD] md:text-left desc-animation md:max-w-1/2">
+          <p className="text-lg font-semibold font-sans text-center text-[#99A9AD] md:text-center lg:text-left desc-animation lg:max-w-1/2">
             {t("BannerDescription")}
           </p>
         </div>
-        <div className="flex justify-center md:justify-start md:ml-30">
+        <div className="flex justify-center md:justify-center lg:justify-start lg:ml-30">
           <Button
             size="lg"
-            className="md:text-left desc-animation md:max-w-1/2 text-black w-42 h-16 rounded-none hover:bg-secondary hover:text-foreground hover:border-1 hover:border-primary hover:cursor-pointer"
+            className="md:text-left desc-animation lg:max-w-1/2 text-black w-42 h-16 rounded-none hover:bg-secondary hover:text-foreground hover:border-1 hover:border-primary hover:cursor-pointer"
           >
             Explore Menu
           </Button>
         </div>
-        <div className="hidden md:block">
+        <div className="hidden md:hidden lg:block">
           <BannerPlate />
         </div>
       </div>
