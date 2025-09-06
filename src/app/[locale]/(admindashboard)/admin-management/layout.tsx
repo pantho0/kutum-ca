@@ -17,7 +17,7 @@ export default function DashboardLayout({
 
       <div className="flex flex-1 h-full">
         {/* Desktop Sidebar */}
-        <aside className="hidden md:block w-72 bg-gray-800 text-white overflow-y-auto fixed left-0 bottom-0 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 hover:scrollbar-thumb-gray-500">
+        <aside className="hidden md:block w-72 bg-gray-800 text-white overflow-y-auto left-0 bottom-0 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 hover:scrollbar-thumb-gray-500">
           <SidebarContent />
         </aside>
 
@@ -45,7 +45,7 @@ export default function DashboardLayout({
         </Sheet>
 
         {/* Main Content - Only this area should scroll */}
-        <main className="flex-1 ml-0 md:ml-72 bg-white dark:bg-gray-900 overflow-y-auto">
+        <main className="flex-1 bg-white dark:bg-gray-900 overflow-y-auto">
           <div className="min-h-[calc(100vh-4rem)]">
             <div className="p-4 sm:p-6">{children}</div>
           </div>
