@@ -17,13 +17,20 @@ const FirstVideo = () => {
     // Set initial state
     gsap.set(".first-vdo-wrapper", { opacity: 0 });
 
+    // Responsive scroll distance (shorter on small/medium screens)
+    const endStr =
+      typeof window !== "undefined" &&
+      window.matchMedia("(min-width: 1024px)").matches
+        ? "+=350% bottom"
+        : "+=180% bottom";
+
     const setupTimeline = () => {
       // Create the timeline ONLY after metadata is loaded
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ".first-vdo-wrapper",
           start: "top top",
-          end: "+=350% bottom",
+          end: endStr,
           scrub: true, // Using a number gives a smoother scrub
           pin: true,
           //   markers: true, // Uncomment to debug
@@ -62,8 +69,8 @@ const FirstVideo = () => {
   }, []); // Empty dependency array ensures this runs only once
 
   return (
-    <section className="first-vdo-wrapper">
-      <div className="h-dvh">
+    <section className="first-vdo-wrapper relative w-full overflow-x-hidden h-[100svh] md:h-dvh">
+      <div className="relative h-[100svh] md:h-dvh w-full">
         <video
           ref={videoRef}
           src="/videos/first-video.mp4"
@@ -71,7 +78,7 @@ const FirstVideo = () => {
           loop
           playsInline
           preload="auto"
-          className="first-vdo"
+          className="first-vdo absolute"
         />
       </div>
     </section>

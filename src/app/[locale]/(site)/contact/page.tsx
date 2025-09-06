@@ -10,8 +10,8 @@ import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import food from "../../../../public/images/food1.jpg";
-import food2 from "../../../../public/images/sprinklesalt.webp";
+import food from "../../../../../public/images/food1.jpg";
+import food2 from "../../../../../public/images/sprinklesalt.webp";
 
 // Register ScrollTrigger globally once
 if (typeof window !== "undefined") {

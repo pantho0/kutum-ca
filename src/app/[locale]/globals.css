@@ -14,8 +14,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: #0B1315;
-  --color-foreground: #FFFFFF;
+  --color-background: #0b1315;
+  --color-foreground: #ffffff;
   --font-sans: "Lexend", sans-serif;
   --font-elsie: "Elsie", sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
@@ -40,9 +40,9 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: #0B1315;
+  --color-secondary: #0b1315;
   --color-primary-foreground: var(--primary-foreground);
-  --color-primary: #FFDE9F;
+  --color-primary: #ffde9f;
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -55,8 +55,8 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #0B1315;
-  --foreground: #FFFFFF;
+  --background: #0b1315;
+  --foreground: #ffffff;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -89,8 +89,8 @@
 }
 
 .dark {
-  --background: #0B1315;
-  --foreground: #FFFFFF;
+  --background: #0b1315;
+  --foreground: #ffffff;
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
@@ -125,7 +125,6 @@
 body {
   width: 100dvw;
   overflow-x: hidden;
-
 }
 
 @layer base {
@@ -137,20 +136,19 @@ body {
   }
 }
 
-@layer components{
-  .custom-animation{
-    @apply opacity-0
+@layer components {
+  .custom-animation {
+    @apply opacity-0;
   }
-  .title-animation{
-    @apply opacity-0
+  .title-animation {
+    @apply opacity-0;
   }
-  .desc-animation{
-    @apply opacity-0
+  .desc-animation {
+    @apply opacity-0;
   }
-  .first-vdo-wrapper{
-    .first-vdo{
-      @apply size-full object-cover md:[object-position:50%_center] [object-position:75%_center]
+  .first-vdo-wrapper {
+    .first-vdo {
+      @apply inset-0 w-full h-full object-cover object-[60%_center] md:object-[50%_center];
     }
   }
- 
 }
