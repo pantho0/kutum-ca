@@ -23,88 +23,83 @@ type NavSection = {
 export const sidebarAdminNavItems: NavSection = {
   main: [
     {
-      href: "/admin-dashboard/all-orders",
-      label: "All Orders",
+      href: "/admin-management/all-items",
+      label: "All Items",
       icon: Package,
     },
     {
-      href: "/admin-dashboard/add-product",
-      label: "Add Product",
+      href: "/admin-management/add-item",
+      label: "Add Item",
       icon: PackagePlus,
-    },
-    {
-      href: "/admin-dashboard/products",
-      label: "Products",
-      icon: ShoppingBasket,
     },
   ],
   account: [
     {
-      href: "/admin-dashboard/profile",
+      href: "/admin-management/profile",
       label: "Profile",
       icon: User,
     },
     {
-      href: "/admin-dashboard/user-management",
+      href: "/admin-management/user-management",
       label: "User Management",
       icon: UserCog,
     },
     {
-      href: "/admin-dashboard/settings",
+      href: "/admin-management/settings",
       label: "Settings",
       icon: Settings,
     },
   ],
   service: [
     {
-      href: "/admin-dashboard/help",
+      href: "/admin-management/help",
       label: "Help Center",
       icon: HelpCircle,
     },
     {
-      href: "/admin-dashboard/terms",
+      href: "/admin-management/terms",
       label: "Terms & Conditions",
       icon: FileText,
     },
   ],
 };
 
-export const sidebarUserNavItems: NavSection = {
-  main: [
-    {
-      href: "/user-dashboard/my-orders",
-      label: "My Orders",
-      icon: Package,
-    },
-    {
-      href: "/user-dashboard/reviews",
-      label: "My Reviews",
-      icon: LayoutDashboard,
-    },
-  ],
-  account: [
-    {
-      href: "/user-dashboard/profile",
-      label: "Profile",
-      icon: User,
-    },
-    {
-      href: "/user-dashboard/settings",
-      label: "Settings",
-      icon: Settings,
-    },
-  ],
-  service: [
-    {
-      href: "/user-dashboard/help",
-      label: "Help Center",
-      icon: HelpCircle,
-    },
-    {
-      href: "/user-dashboard/terms",
+// export const sidebarUserNavItems: NavSection = {
+//   main: [
+//     {
+//       href: "/user-management/my-orders",
+//       label: "My Orders",
+//       icon: Package,
+//     },
+//     {
+//       href: "/user-management/reviews",
+//       label: "My Reviews",
+//       icon: LayoutDashboard,
+//     },
+//   ],
+//   account: [
+//     {
+//       href: "/user-management/profile",
+//       label: "Profile",
+//       icon: User,
+//     },
+//     {
+//       href: "/user-management/settings",
+//       label: "Settings",
+//       icon: Settings,
+//     },
+//   ],
+//   service: [
+//     {
+//       href: "/user-management/help",
+//       label: "Help Center",
+//       icon: HelpCircle,
+//     },
+//     {
+//       href: "/user-management/terms",
 
-      label: "Terms & Conditions",
-      icon: FileText,
-    },
-  ],
-};
+//       label: "Terms & Conditions",
+//       icon: FileText,
+//     },
+//   ],
+// };

@@ -4,10 +4,8 @@ import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-
 
 import { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
@@ -22,9 +20,9 @@ interface NavItemProps {
 }
 
 export function SidebarContent({ onLinkClick }: { onLinkClick?: () => void }) {
-//   const token = useAppSelector(selectCurrentToken);
-//   const user: any = verifyToken(token as string);
-//   const dispatch = useAppDispatch();
+  //   const token = useAppSelector(selectCurrentToken);
+  //   const user: any = verifyToken(token as string);
+  //   const dispatch = useAppDispatch();
   const router = useRouter();
 
   const [mounted, setMounted] = useState(false);
@@ -66,7 +64,7 @@ export function SidebarContent({ onLinkClick }: { onLinkClick?: () => void }) {
   const handleLogout = async () => {
     setClickedLogut(true);
     try {
-    //   await serverLogout();
+      //   await serverLogout();
       document.cookie =
         "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
       document.cookie =
@@ -148,19 +146,20 @@ export function SidebarContent({ onLinkClick }: { onLinkClick?: () => void }) {
                     <AvatarFallback className="bg-gray-600">SG</AvatarFallback>
                   </Avatar>
                   <div>
-                    <p className="font-semibold text-white">
-                      {"Admin"}
-                    </p>
-                    <p className="text-xs text-gray-400">{'demo@email.com'}</p>
+                    <p className="font-semibold text-white">{"Admin"}</p>
+                    <p className="text-xs text-gray-400">{"demo@email.com"}</p>
                   </div>
                 </div>
 
                 {/* Navigation */}
                 <nav className="space-y-4">
                   <div className="space-y-1">
-                    {sidebarAdminNavItems.main.map((item:any) => (
-                          <NavItem key={item.href} {...item} />
-                        ))}
+                    <h3 className="px-4 mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                      Manage Items
+                    </h3>
+                    {sidebarAdminNavItems.main.map((item: any) => (
+                      <NavItem key={item.href} {...item} />
+                    ))}
                   </div>
 
                   <div className="space-y-1 pt-2">
@@ -168,9 +167,9 @@ export function SidebarContent({ onLinkClick }: { onLinkClick?: () => void }) {
                       Manage account
                     </h3>
                     <div className="space-y-1">
-                      {sidebarAdminNavItems.account.map((item:any) => (
-                            <NavItem key={item.href} {...item} />
-                          ))}
+                      {sidebarAdminNavItems.account.map((item: any) => (
+                        <NavItem key={item.href} {...item} />
+                      ))}
                     </div>
                   </div>
 
@@ -179,9 +178,9 @@ export function SidebarContent({ onLinkClick }: { onLinkClick?: () => void }) {
                       Customer service
                     </h3>
                     <div className="space-y-1">
-                      {sidebarAdminNavItems.service.map((item:any) => (
-                            <NavItem key={item.href} {...item} />
-                          ))}
+                      {sidebarAdminNavItems.service.map((item: any) => (
+                        <NavItem key={item.href} {...item} />
+                      ))}
                     </div>
                   </div>
                 </nav>

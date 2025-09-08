@@ -1,7 +1,7 @@
 import React from "react";
 
 const AdminDashboardPage = () => {
-  return <div>AdminDashboardPage</div>;
+  return <div className="text-black">AdminDashboardPage</div>;
 };
 
 export default AdminDashboardPage;
