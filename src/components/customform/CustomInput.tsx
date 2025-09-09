@@ -1,6 +1,7 @@
+"use client";
 import { ReactNode } from "react";
-import { Controller, useFormContext } from "react-hook-form";
 import { Input } from "../ui/input";
+import { Controller, useFormContext } from "react-hook-form";
 
 interface CustomInputProps {
   type: string;
@@ -32,7 +33,7 @@ function CustomInput({
           <>
             <label
               htmlFor={name}
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-black mb-1 font-sans"
             >
               {label}
             </label>
@@ -47,7 +48,7 @@ function CustomInput({
               disabled={disabled}
             />
             {errors[name] && (
-              <p className="text-red-500 text-sm">
+              <p className="text-red-500 text-sm font-sans">
                 {errors[name].message as string}
               </p>
             )}

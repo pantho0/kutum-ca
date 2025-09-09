@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { FormItem, FormLabel, FormMessage } from "../ui/form";
@@ -40,7 +41,7 @@ function CustomSelect({
 
   return (
     <FormItem>
-      <FormLabel>{label}</FormLabel>
+      <FormLabel className="font-sans text-black">{label}</FormLabel>
       <Controller
         name={name}
         control={control}
@@ -60,7 +61,9 @@ function CustomSelect({
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectLabel>{label}</SelectLabel>
+                <SelectLabel className="font-sans text-black">
+                  {label}
+                </SelectLabel>
                 {options.length > 0 ? (
                   options.map((option) => (
                     <SelectItem
@@ -82,7 +85,9 @@ function CustomSelect({
         )}
       />
       {errors[name] && (
-        <p className="text-red-500 text-sm">{errors[name].message as string}</p>
+        <p className="text-red-500 text-sm font-sans">
+          {errors[name].message as string}
+        </p>
       )}
       <FormMessage />
     </FormItem>
