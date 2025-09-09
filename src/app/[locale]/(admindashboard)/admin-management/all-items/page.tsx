@@ -60,7 +60,9 @@ function AllItemsPage() {
           />
         </div>
         <div>
-          <Select onValueChange={(value) => setFilter({ category: value })}>
+          <Select
+            onValueChange={(value) => setFilter({ ...filter, category: value })}
+          >
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Select Category" />
             </SelectTrigger>
