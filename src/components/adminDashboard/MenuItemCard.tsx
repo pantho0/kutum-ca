@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Pencil, Trash2, BadgeCheck } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
+import Link from "next/link";
 
 export interface MenuItemCardProps {
   _id?: string;
@@ -21,6 +22,7 @@ export interface MenuItemCardProps {
 }
 
 export default function MenuItemCard({
+  _id,
   image,
   itemName,
   category,
@@ -56,20 +58,22 @@ export default function MenuItemCard({
       </CardHeader>
 
       <CardContent className="px-3">
-        <p className="text-xs text-gray-600 line-clamp-2 mb-3">{description}</p>
+        <p className="text-xs text-white line-clamp-2 mb-3">{description}</p>
         <div className="flex gap-2">
-          <Button
-            size="sm"
-            variant="outline"
-            className="flex items-center gap-1 text-xs"
-          >
-            <Pencil className="w-3 h-3" />
-            Update
-          </Button>
+          <Link href={`/admin-management/all-items/${_id}`}>
+            <Button
+              size="sm"
+              variant="outline"
+              className="flex items-center gap-1 text-xs text-white cursor-pointer hover:bg-black/90 hover:text-white"
+            >
+              <Pencil className="w-3 h-3" />
+              Update
+            </Button>
+          </Link>
           <Button
             size="sm"
             variant="destructive"
-            className="flex items-center gap-1 text-xs"
+            className="flex items-center gap-1 text-xs cursor-pointer"
           >
             <Trash2 className="w-3 h-3" />
             Delete
