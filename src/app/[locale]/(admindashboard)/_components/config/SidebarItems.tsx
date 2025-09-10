@@ -1,8 +1,8 @@
-import { LucideIcon, PackagePlus, ShoppingBasket } from "lucide-react";
+import { LucideIcon, PackagePlus } from "lucide-react";
 import {
   FileText,
   HelpCircle,
-  LayoutDashboard,
+  BookCheck,
   User,
   Package,
   Settings,
@@ -48,6 +48,13 @@ export const sidebarAdminNavItems: NavSection = {
       href: "/admin-management/settings",
       label: "Settings",
       icon: Settings,
+    },
+  ],
+  reservations: [
+    {
+      href: "/admin-management/reservations",
+      label: "Reservations",
+      icon: BookCheck,
     },
   ],
   service: [

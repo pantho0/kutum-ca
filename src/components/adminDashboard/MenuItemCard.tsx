@@ -58,7 +58,7 @@ export default function MenuItemCard({
       </CardHeader>
 
       <CardContent className="px-3">
-        <p className="text-xs text-white line-clamp-2 mb-3">{description}</p>
+        <p className="text-xs text-black line-clamp-2 mb-3">{description}</p>
         <div className="flex gap-2">
           <Link href={`/admin-management/all-items/${_id}`}>
             <Button

@@ -164,6 +164,15 @@ export function SidebarContent({ onLinkClick }: { onLinkClick?: () => void }) {
 
                   <div className="space-y-1 pt-2">
                     <h3 className="px-4 mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                      Manage Reservations
+                    </h3>
+                    {sidebarAdminNavItems.reservations.map((item: any) => (
+                      <NavItem key={item.href} {...item} />
+                    ))}
+                  </div>
+
+                  <div className="space-y-1 pt-2">
+                    <h3 className="px-4 mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
                       Manage account
                     </h3>
                     <div className="space-y-1">
