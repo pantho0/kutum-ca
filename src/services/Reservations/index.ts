@@ -1,9 +1,12 @@
 "use server";
 import axiosInstance from "@/lib/AxiosInstance";
+import { revalidateTag } from "next/cache";
 
-export const getAllReservations = async () => {
+export const getAllReservations = async (query?: Record<string, unknown>) => {
   try {
-    const res = await axiosInstance.get("/reservations/get-all-reservation");
+    const res = await axiosInstance.get("/reservations/get-all-reservation", {
+      params: query,
+    });
 
     return res.data;
   } catch (error: any) {
@@ -22,6 +25,7 @@ export const updatReservationStatus = async (reservationData: any) => {
     if (!res.data.success) {
       throw new Error(res.data.message || "Error updating reservation status");
     }
+    revalidateTag("reservation");
     return res.data;
   } catch (error: any) {
     throw new Error(

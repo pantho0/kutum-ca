@@ -8,7 +8,8 @@ import { toast } from "sonner";
 export const useGetAllReservations = () => {
   return useMutation({
     mutationKey: ["reservation"],
-    mutationFn: async () => await getAllReservations(),
+    mutationFn: async (query?: Record<string, unknown>) =>
+      await getAllReservations(query),
   });
 };
 
@@ -19,7 +20,6 @@ export const useUpdateReservation = () => {
       await updatReservationStatus(reservationData),
     onSuccess: () => {
       toast.success("Reservation updated successfully", { duration: 2000 });
-      window.location.replace("/admin-management/reservations");
     },
     onError: () => {
       toast.error("Failed to update reservation", { duration: 2000 });
