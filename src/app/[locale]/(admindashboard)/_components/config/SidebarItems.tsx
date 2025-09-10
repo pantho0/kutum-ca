@@ -1,10 +1,15 @@
-import { FileSymlink, LucideIcon, PackagePlus } from "lucide-react";
+import {
+  BookMarked,
+  FileSymlink,
+  LucideIcon,
+  PackagePlus,
+  Utensils,
+} from "lucide-react";
 import {
   FileText,
   HelpCircle,
   BookCheck,
   User,
-  Package,
   Settings,
   UserCog,
 } from "lucide-react";
@@ -25,12 +30,17 @@ export const sidebarAdminNavItems: NavSection = {
     {
       href: "/admin-management/all-items",
       label: "All Items",
-      icon: Package,
+      icon: Utensils,
     },
     {
       href: "/admin-management/add-item",
       label: "Add Item",
       icon: PackagePlus,
+    },
+    {
+      href: "/admin-management/all-categories",
+      label: "All Categories",
+      icon: BookMarked,
     },
     {
       href: "/admin-management/add-category",
