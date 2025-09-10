@@ -171,7 +171,15 @@ function MenuItemUpadePage({ params }: MenuItemUpadePageProps) {
 
             <div className="mb-3 flex justify-center">
               {image ? (
-                <Image src={image} alt="uploaded" width={200} height={200} />
+                <div>
+                  <Image src={image} alt="uploaded" width={200} height={200} />
+                  <Button
+                    onClick={() => setImages("")}
+                    className="w-full cursor-pointer bg-red-800 hover:bg-red-800/90"
+                  >
+                    Remove Image
+                  </Button>
+                </div>
               ) : (
                 <span>No Image Selected</span>
               )}
@@ -181,7 +189,7 @@ function MenuItemUpadePage({ params }: MenuItemUpadePageProps) {
               <Button
                 type="submit"
                 className="w-full cursor-pointer bg-green-800 hover:bg-green-800/90"
-                //   disabled={isPending}
+                disabled={isPending}
               >
                 Update Menu Item
               </Button>
