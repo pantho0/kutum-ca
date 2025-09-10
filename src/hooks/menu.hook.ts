@@ -29,6 +29,7 @@ export const useUpdateMenu = () => {
     mutationFn: async (menuData: IMenu) => updateMenu(menuData),
     onSuccess: () => {
       toast.success("Menu item updated successfully", { duration: 2000 });
+      window.location.replace("/admin-management/all-items");
     },
     onError: () => {
       toast.error("Failed to update menu item", { duration: 2000 });
