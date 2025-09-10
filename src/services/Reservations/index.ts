@@ -1,14 +1,28 @@
+"use server";
+import axiosInstance from "@/lib/AxiosInstance";
+
 export const getAllReservations = async () => {
   try {
-    const res = await fetch(
-      "http://localhost:5000/api/v1/reservations/get-all-reservation",
-      {
-        method: "GET",
-      }
-    );
+    const res = await axiosInstance.get("/reservations/get-all-reservation");
 
-    const data = await res.json();
-    return data;
+    return res.data;
+  } catch (error: any) {
+    throw new Error(
+      error.response?.data?.message || error.message || "Error fetching data"
+    );
+  }
+};
+
+export const updatReservationStatus = async (reservationData: any) => {
+  try {
+    const res = await axiosInstance.put(
+      `/reservations/update-reservation/${reservationData.id}`,
+      reservationData
+    );
+    if (!res.data.success) {
+      throw new Error(res.data.message || "Error updating reservation status");
+    }
+    return res.data;
   } catch (error: any) {
     throw new Error(
       error.response?.data?.message || error.message || "Error fetching data"
