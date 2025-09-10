@@ -1,9 +1,9 @@
 import { getAllReservations } from "@/services/Reservations";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 export const useGetAllReservations = () => {
-  return useQuery({
-    queryKey: ["reservations"],
-    queryFn: async () => await getAllReservations(),
+  return useMutation({
+    mutationKey: ["reservation"],
+    mutationFn: async () => await getAllReservations(),
   });
 };

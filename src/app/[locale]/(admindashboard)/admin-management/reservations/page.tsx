@@ -1,6 +1,16 @@
-import React from "react";
+"use client";
+import { useGetAllReservations } from "@/hooks/reservations.hook";
+import { useEffect } from "react";
 
 function ReservationPage() {
+  const { mutate: getAllReservations, data } = useGetAllReservations();
+
+  console.log(data);
+
+  useEffect(() => {
+    getAllReservations();
+  }, [getAllReservations]);
+
   return (
     <div className="text-black font-sans px-4 sm:px-6 lg:px-8 py-6 max-w-7xl mx-auto">
       <div className="border-l-8 border-green-700 pl-2 sm:pl-4">
