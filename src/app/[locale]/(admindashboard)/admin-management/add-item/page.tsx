@@ -3,13 +3,53 @@ import CustomForm from "@/components/customform/CustomForm";
 import CustomInput from "@/components/customform/CustomInput";
 import CustomSelect from "@/components/customform/CustomSelect";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useGetCategory } from "@/hooks/category.hook";
+import { uploadSingleImage } from "@/services/Menu";
+import { convertBase64 } from "@/utils/helperFunctions";
+import Image from "next/image";
+import { useRef, useState } from "react";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 
 function AddItemPage() {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  // const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [image, setImages] = useState<string>("");
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const { data } = useGetCategory();
+  const categoryOptions = data?.data?.map((cat: any) => ({
+    key: cat?._id,
+    value: cat?._id,
+    label: cat?.catName?.toUpperCase(),
+  }));
+
+  const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    // const toastId = toast.loading("Please wait! Uploading Image");
+    const file = e.target.files?.[0];
+    if (!file) return;
+    try {
+      const image = await convertBase64(file);
+      const res = await uploadSingleImage(image as string);
+      console.log(res);
+      setImages(res);
+      // toast.success("Image uploaded successfully", {
+      //   id: toastId,
+      // });
+      // Clear the file input after upload
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    } catch (error) {
+      // toast.error("Error uploading image", {
+      //   id: toastId,
+      // });
+      console.log(error);
+    }
+  };
+
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
+    const menuData = {
+      ...data,
+      price: Number(data.price),
+      image,
+    };
+    console.log(menuData);
   };
   return (
     <div className="text-black font-sans px-4 sm:px-6 lg:px-8 py-6 max-w-7xl mx-auto">
@@ -24,13 +64,17 @@ function AddItemPage() {
             <div className="flex-1">
               <CustomInput
                 type="text"
-                name="name"
-                placeholder="Name"
-                label="Name"
+                name="itemName"
+                placeholder="Item Name"
+                label="Item Name"
               />
             </div>
             <div className="flex-1">
-              <CustomSelect name="category" label="Category" options={[]} />
+              <CustomSelect
+                name="category"
+                label="Category"
+                options={categoryOptions || []}
+              />
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 sm:mt-6">
@@ -83,19 +127,22 @@ function AddItemPage() {
                     name="image"
                     accept="image/*"
                     className="hidden"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0] || null;
-                      setSelectedFile(file);
-                    }}
-                    value={selectedFile ? undefined : ""}
+                    ref={fileInputRef}
+                    onChange={uploadImage}
                   />
                 </label>
               </div>
-              <p className="mt-2 text-sm text-gray-500">
-                {selectedFile ? selectedFile.name : "No file chosen"}
-              </p>
             </div>
           </div>
+
+          <div className="mb-3 flex justify-center">
+            {image ? (
+              <Image src={image} alt="uploaded" width={200} height={200} />
+            ) : (
+              "No Image Selected"
+            )}
+          </div>
+
           <div className="w-full px-2">
             <Button
               type="submit"

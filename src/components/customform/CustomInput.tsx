@@ -17,7 +17,7 @@ function CustomInput({
   name,
   placeholder,
   label,
-  defaultValue,
+  defaultValue = "",
   disabled,
 }: CustomInputProps) {
   const {
