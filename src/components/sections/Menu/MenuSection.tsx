@@ -17,128 +17,35 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGetMenu } from "@/hooks/menu.hook";
+import { MenuItemCardProps } from "@/components/adminDashboard/MenuItemCard";
+import { useGetCategory } from "@/hooks/category.hook";
 
 // Register ScrollTrigger globally once
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// --- Menu Data ---
-// You can easily add, remove, or edit items here.
-const menuItems = [
-  // Breakfast
-  {
-    name: "Classic Pancakes",
-    description:
-      "Fluffy buttermilk pancakes served with maple syrup and fresh berries.",
-    price: 14,
-    image: "/images/classicpancake.webp",
-    category: "Breakfast",
-  },
-  {
-    name: "Avocado Toast",
-    description:
-      "Sourdough toast with mashed avocado, cherry tomatoes, and a sprinkle of chili flakes.",
-    price: 12,
-    image: "/images/avocadotoast.webp",
-    category: "Breakfast",
-  },
-  // Lunch
-  {
-    name: "Finger Chicken",
-    description:
-      "Virgin olive oil, touch of garlic, prawns, green peas, sun dried tomato, and Italian herbs.",
-    price: 18,
-    image: "/images/fingerchicken.webp",
-    category: "Lunch",
-  },
-  {
-    name: "Gourmet Burger",
-    description:
-      "Angus beef patty with cheddar cheese, lettuce, tomato, and our special sauce.",
-    price: 22,
-    image: "/images/gourmetburger.webp",
-    category: "Lunch",
-  },
-  // Dinner
-  {
-    name: "Grilled Salmon",
-    description:
-      "Perfectly grilled salmon fillet served with asparagus and lemon butter sauce.",
-    price: 28,
-    image: "/images/grilledsalmon.webp",
-    category: "Dinner",
-  },
-  {
-    name: "Ribeye Steak",
-    description:
-      "12oz Ribeye steak cooked to perfection, served with mashed potatoes and gravy.",
-    price: 35,
-    image: "/images/ribeyesteak.webp",
-    category: "Dinner",
-  },
-  // Dessert
-  {
-    name: "Chocolate Lava Cake",
-    description:
-      "Warm chocolate cake with a molten center, served with vanilla ice cream.",
-    price: 12,
-    image: "/images/chocolatelavacake.webp",
-    category: "Dessert",
-  },
-  // Drink
-  {
-    name: "Orange Juice",
-    description:
-      "Freshly squeezed oranges, served chilled with a slice of orange.",
-    price: 10,
-    image: "/images/orangejuice.webp",
-    category: "Drink",
-  },
-];
-
-const menuTabs = [
-  {
-    value: "All",
-    label: "All",
-    icon: <Utensils className="h-8 w-8 size-40" />,
-  },
-  {
-    value: "Breakfast",
-    label: "Breakfast",
-    icon: <Coffee className="h-8 w-8 size-40" />,
-  },
-  {
-    value: "Lunch",
-    label: "Lunch",
-    icon: <Salad className="h-8 w-8 size-40" />,
-  },
-  {
-    value: "Dinner",
-    label: "Dinner",
-    icon: <Soup className="h-8 w-8 size-40" />,
-  },
-  {
-    value: "Dessert",
-    label: "Dessert",
-    icon: <CakeSlice className="h-8 w-8 size-40" />,
-  },
-  {
-    value: "Drink",
-    label: "Drink",
-    icon: <GlassWater className="h-8 w-8 size-40" />,
-  },
-];
-
 const MenuSection = () => {
   const container = useRef(null);
   const menuGridRef = useRef(null);
-  const [activeTab, setActiveTab] = useState("All");
+  const [activeTab, setActiveTab] = useState("");
 
-  const filteredItems =
-    activeTab === "All"
-      ? menuItems
-      : menuItems.filter((item) => item.category === activeTab);
+  const { mutate: getAllMenu, data } = useGetMenu();
+  const { data: categoryData } = useGetCategory();
+
+  const menuTabs = categoryData?.data.map((item: any) => item.catName);
+  console.log(menuTabs);
+
+  const menuItems: MenuItemCardProps[] = data?.data?.data;
+
+  useEffect(() => {
+    if (activeTab === "all") {
+      getAllMenu({});
+    } else {
+      getAllMenu({ category: activeTab });
+    }
+  }, [getAllMenu, activeTab]);
 
   // GSAP animation for tab changes
   useEffect(() => {
@@ -212,18 +119,27 @@ const MenuSection = () => {
             habitasse dolor lacus viverra.
           </p>
         </div>
-
-        {/* Shadcn Tabs */}
+        {/* tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-3 sm:grid-cols-6 h-auto bg-transparent p-0 mb-12 menu-tabs-list">
-            {menuTabs.map((tab) => (
+            <TabsTrigger
+              key={"all"}
+              value={"all"}
+              onChange={() => setActiveTab("all")}
+              className="flex flex-col items-center cursor-pointer justify-center gap-2 h-28 text-neutral-400 data-[state=active]:text-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none transition-colors duration-300"
+            >
+              <Utensils />
+              <span className="text-lg font-medium">{"ALL"}</span>
+            </TabsTrigger>
+            {menuTabs?.map((tab: string) => (
               <TabsTrigger
-                key={tab.value}
-                value={tab.value}
+                key={tab}
+                value={tab}
+                onChange={() => setActiveTab(tab)}
                 className="flex flex-col items-center cursor-pointer justify-center gap-2 h-28 text-neutral-400 data-[state=active]:text-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none transition-colors duration-300"
               >
-                {tab.icon}
-                <span className="text-lg font-medium">{tab.label}</span>
+                <Utensils />
+                <span className="text-lg font-medium">{tab.toUpperCase()}</span>
               </TabsTrigger>
             ))}
           </TabsList>
@@ -233,15 +149,15 @@ const MenuSection = () => {
               ref={menuGridRef}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              {filteredItems.map((item, index) => (
+              {menuItems?.map((item, index) => (
                 <div
-                  key={`${item.name}-${index}`}
+                  key={`${item.itemName}-${index}`}
                   className="flex items-center gap-6"
                 >
                   <div className="flex-shrink-0 w-28 h-28">
                     <Image
                       src={item.image}
-                      alt={item.name}
+                      alt={item.itemName}
                       width={112}
                       height={112}
                       className="w-full h-full object-cover rounded-md"
@@ -249,7 +165,7 @@ const MenuSection = () => {
                   </div>
                   <div className="flex-grow">
                     <h3 className="text-2xl font-elsie text-white">
-                      {item.name}
+                      {item.itemName}
                     </h3>
                     <p className="text-neutral-400 my-2">{item.description}</p>
                     <p className="text-xl font-bold text-primary">
