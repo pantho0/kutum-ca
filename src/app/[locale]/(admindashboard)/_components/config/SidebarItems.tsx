@@ -1,4 +1,4 @@
-import { LucideIcon, PackagePlus } from "lucide-react";
+import { FileSymlink, LucideIcon, PackagePlus } from "lucide-react";
 import {
   FileText,
   HelpCircle,
@@ -31,6 +31,11 @@ export const sidebarAdminNavItems: NavSection = {
       href: "/admin-management/add-item",
       label: "Add Item",
       icon: PackagePlus,
+    },
+    {
+      href: "/admin-management/add-category",
+      label: "Add Category",
+      icon: FileSymlink,
     },
   ],
   account: [

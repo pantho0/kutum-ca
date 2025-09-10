@@ -45,7 +45,7 @@ function ReservationPage() {
           <Input
             type="text"
             name="searchTerm"
-            placeholder="Search Item"
+            placeholder="Search Reservations"
             onChange={handleSearch}
           />
         </div>
