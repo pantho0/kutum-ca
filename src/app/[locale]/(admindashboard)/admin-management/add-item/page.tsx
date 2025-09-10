@@ -4,16 +4,20 @@ import CustomInput from "@/components/customform/CustomInput";
 import CustomSelect from "@/components/customform/CustomSelect";
 import { Button } from "@/components/ui/button";
 import { useGetCategory } from "@/hooks/category.hook";
+import { useAddMenuItem } from "@/hooks/menu.hook";
+import { IMenu } from "@/interface";
 import { uploadSingleImage } from "@/services/Menu";
 import { convertBase64 } from "@/utils/helperFunctions";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { FieldValues, SubmitHandler } from "react-hook-form";
+import { toast } from "sonner";
 
 function AddItemPage() {
   // const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [image, setImages] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { mutate: handleAddMenuItem, isPending } = useAddMenuItem();
   const { data } = useGetCategory();
   const categoryOptions = data?.data?.map((cat: any) => ({
     key: cat?._id,
@@ -22,7 +26,7 @@ function AddItemPage() {
   }));
 
   const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    // const toastId = toast.loading("Please wait! Uploading Image");
+    const toastId = toast.loading("Please wait! Uploading Image");
     const file = e.target.files?.[0];
     if (!file) return;
     try {
@@ -30,16 +34,16 @@ function AddItemPage() {
       const res = await uploadSingleImage(image as string);
       console.log(res);
       setImages(res);
-      // toast.success("Image uploaded successfully", {
-      //   id: toastId,
-      // });
+      toast.success("Image uploaded successfully", {
+        id: toastId,
+      });
       // Clear the file input after upload
       if (fileInputRef.current) fileInputRef.current.value = "";
-    } catch (error) {
-      // toast.error("Error uploading image", {
-      //   id: toastId,
-      // });
+    } catch (error: any) {
       console.log(error);
+      toast.error("Error uploading image", {
+        id: toastId,
+      });
     }
   };
 
@@ -49,7 +53,7 @@ function AddItemPage() {
       price: Number(data.price),
       image,
     };
-    console.log(menuData);
+    handleAddMenuItem(menuData as IMenu);
   };
   return (
     <div className="text-black font-sans px-4 sm:px-6 lg:px-8 py-6 max-w-7xl mx-auto">
@@ -139,7 +143,7 @@ function AddItemPage() {
             {image ? (
               <Image src={image} alt="uploaded" width={200} height={200} />
             ) : (
-              "No Image Selected"
+              <span>No Image Selected</span>
             )}
           </div>
 
@@ -147,6 +151,7 @@ function AddItemPage() {
             <Button
               type="submit"
               className="w-full cursor-pointer bg-green-800 hover:bg-green-800/90"
+              disabled={isPending}
             >
               Add Menu Item
             </Button>

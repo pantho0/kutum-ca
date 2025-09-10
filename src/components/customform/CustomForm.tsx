@@ -31,7 +31,7 @@ function CustomForm({
 
   const submit: SubmitHandler<any> = (data: any) => {
     onSubmit(data);
-    methods.reset();
+    // methods.reset();
   };
 
   return (
