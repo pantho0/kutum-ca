@@ -1,5 +1,5 @@
 import { IMenu } from "@/interface";
-import { addMenuItem, getMenu } from "@/services/Menu";
+import { addMenuItem, getMenu, getSingleMenu } from "@/services/Menu";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 
@@ -7,6 +7,13 @@ export const useGetMenu = () => {
   return useMutation({
     mutationKey: ["menu"],
     mutationFn: async (query?: Record<string, unknown>) => getMenu(query),
+  });
+};
+
+export const useGetSingleMenu = () => {
+  return useMutation({
+    mutationKey: ["menu"],
+    mutationFn: async (id: string) => getSingleMenu(id),
   });
 };
 

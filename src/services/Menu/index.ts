@@ -21,6 +21,20 @@ export const getMenu = async (query?: Record<string, unknown>) => {
   }
 };
 
+export const getSingleMenu = async (id: string) => {
+  try {
+    const res = await axiosInstance.get(`/menus/${id}`);
+    if (!res.data.success) {
+      throw new Error(res.data.message || "Error fetching orders");
+    }
+    return res.data;
+  } catch (error: any) {
+    throw new Error(
+      error.response?.data?.message || error.message || "Error fetching data"
+    );
+  }
+};
+
 export const addMenuItem = async (menudata: IMenu) => {
   try {
     const res = await axiosInstance.post("/menus/create-menu", menudata);
