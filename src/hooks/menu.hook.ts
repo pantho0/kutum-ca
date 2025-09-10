@@ -6,7 +6,7 @@ import {
   getSingleMenu,
   updateMenu,
 } from "@/services/Menu";
-import { MutationFunction, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 
 export const useGetMenu = () => {
@@ -26,8 +26,7 @@ export const useGetSingleMenu = () => {
 export const useUpdateMenu = () => {
   return useMutation({
     mutationKey: ["menu"],
-    // @ts-ignore
-    mutationFn: async (id: string, menuData: IMenu) => updateMenu(id, menuData),
+    mutationFn: async (menuData: IMenu) => updateMenu(menuData),
     onSuccess: () => {
       toast.success("Menu item updated successfully", { duration: 2000 });
     },

@@ -4,7 +4,8 @@ import CustomInput from "@/components/customform/CustomInput";
 import CustomSelect from "@/components/customform/CustomSelect";
 import { Button } from "@/components/ui/button";
 import { useGetCategory } from "@/hooks/category.hook";
-import { useGetSingleMenu } from "@/hooks/menu.hook";
+import { useGetSingleMenu, useUpdateMenu } from "@/hooks/menu.hook";
+import { IMenu } from "@/interface";
 import { uploadSingleImage } from "@/services/Menu";
 import { convertBase64 } from "@/utils/helperFunctions";
 import Image from "next/image";
@@ -41,6 +42,7 @@ function MenuItemUpadePage({ params }: MenuItemUpadePageProps) {
     value: cat?._id,
     label: cat?.catName?.toUpperCase(),
   }));
+  const { mutate: updateMenu } = useUpdateMenu();
 
   const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const toastId = toast.loading("Please wait! Uploading Image");
@@ -65,12 +67,13 @@ function MenuItemUpadePage({ params }: MenuItemUpadePageProps) {
   };
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    const updatedMenuData = {
+    const updatedMenuData: Partial<IMenu> = {
       ...data,
+      _id: id,
       price: Number(data.price),
       image,
     };
-    console.log(updatedMenuData);
+    updateMenu(updatedMenuData as IMenu);
   };
 
   useEffect(() => {

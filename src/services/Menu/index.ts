@@ -35,9 +35,9 @@ export const getSingleMenu = async (id: string) => {
   }
 };
 
-export const updateMenu = async (id: string, menudata: IMenu) => {
+export const updateMenu = async (menudata: IMenu) => {
   try {
-    const res = await axiosInstance.put(`/menus/${id}`, menudata);
+    const res = await axiosInstance.put(`/menus/${menudata._id}`, menudata);
     if (!res.data.success) {
       throw new Error(res.data.message || "Error updating menu item");
     }
