@@ -138,7 +138,12 @@ const MenuSection = () => {
                 onChange={() => setActiveTab(tab)}
                 className="flex flex-col items-center cursor-pointer justify-center gap-2 h-28 text-neutral-400 data-[state=active]:text-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none transition-colors duration-300"
               >
-                <Utensils />
+                {(tab === "all" && <Utensils />) ||
+                  (tab === "breakfast" && <Coffee />) ||
+                  (tab === "lunch" && <Salad />) ||
+                  (tab === "dinner" && <Soup />) ||
+                  (tab === "dessert" && <CakeSlice />) ||
+                  (tab === "drinks" && <GlassWater />) || <Utensils />}
                 <span className="text-lg font-medium">{tab.toUpperCase()}</span>
               </TabsTrigger>
             ))}
@@ -149,31 +154,39 @@ const MenuSection = () => {
               ref={menuGridRef}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              {menuItems?.map((item, index) => (
-                <div
-                  key={`${item.itemName}-${index}`}
-                  className="flex items-center gap-6"
-                >
-                  <div className="flex-shrink-0 w-28 h-28">
-                    <Image
-                      src={item.image}
-                      alt={item.itemName}
-                      width={112}
-                      height={112}
-                      className="w-full h-full object-cover rounded-md"
-                    />
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="text-2xl font-elsie text-white">
-                      {item.itemName}
-                    </h3>
-                    <p className="text-neutral-400 my-2">{item.description}</p>
-                    <p className="text-xl font-bold text-primary">
-                      ${item.price}
-                    </p>
-                  </div>
+              {menuItems?.length === 0 ? (
+                <div className="col-span-12">
+                  <p className="text-center">No menu items found</p>
                 </div>
-              ))}
+              ) : (
+                menuItems?.map((item, index) => (
+                  <div
+                    key={`${item.itemName}-${index}`}
+                    className="flex items-center gap-6"
+                  >
+                    <div className="flex-shrink-0 w-28 h-28">
+                      <Image
+                        src={item.image}
+                        alt={item.itemName}
+                        width={112}
+                        height={112}
+                        className="w-full h-full object-cover rounded-md"
+                      />
+                    </div>
+                    <div className="flex-grow">
+                      <h3 className="text-2xl font-elsie text-white">
+                        {item.itemName}
+                      </h3>
+                      <p className="text-neutral-400 my-2">
+                        {item.description}
+                      </p>
+                      <p className="text-xl font-bold text-primary">
+                        ${item.price}
+                      </p>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           </TabsContent>
         </Tabs>
