@@ -35,6 +35,21 @@ export const getSingleMenu = async (id: string) => {
   }
 };
 
+export const updateMenu = async (id: string, menudata: IMenu) => {
+  try {
+    const res = await axiosInstance.put(`/menus/${id}`, menudata);
+    if (!res.data.success) {
+      throw new Error(res.data.message || "Error updating menu item");
+    }
+    return res.data;
+  } catch (error: any) {
+    console.log(error);
+    throw new Error(
+      error.response?.data?.message || error.message || "Error fetching data"
+    );
+  }
+};
+
 export const addMenuItem = async (menudata: IMenu) => {
   try {
     const res = await axiosInstance.post("/menus/create-menu", menudata);
