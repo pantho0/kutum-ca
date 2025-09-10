@@ -1,5 +1,6 @@
 "use server";
 
+import { IMenu } from "@/interface";
 import axiosInstance from "@/lib/AxiosInstance";
 
 export const getMenu = async (query?: Record<string, unknown>) => {
@@ -12,6 +13,20 @@ export const getMenu = async (query?: Record<string, unknown>) => {
       throw new Error(res.data.message || "Error fetching orders");
     }
 
+    return res.data;
+  } catch (error: any) {
+    throw new Error(
+      error.response?.data?.message || error.message || "Error fetching data"
+    );
+  }
+};
+
+export const addMenuItem = async (menudata: IMenu) => {
+  try {
+    const res = await axiosInstance.post("/menus", menudata);
+    if (!res.data.success) {
+      throw new Error(res.data.message || "Error adding menu item");
+    }
     return res.data;
   } catch (error: any) {
     throw new Error(

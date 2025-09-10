@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Badge } from "../ui/badge";
 
 export interface MenuItemCardProps {
-  _id: string;
+  _id?: string;
   image: string;
   itemName: string;
   category: {
