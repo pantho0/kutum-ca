@@ -7,7 +7,7 @@ import {
   getSingleMenu,
   updateMenu,
 } from "@/services/Menu";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
 
 export const useGetMenu = () => {
@@ -52,8 +52,8 @@ export const useAddMenuItem = () => {
 };
 
 export const useGetDeletedMenu = () => {
-  return useMutation({
-    mutationKey: ["menu"],
-    mutationFn: async () => getDeletedMenu(),
+  return useQuery({
+    queryKey: ["menu"],
+    queryFn: async () => getDeletedMenu(),
   });
 };

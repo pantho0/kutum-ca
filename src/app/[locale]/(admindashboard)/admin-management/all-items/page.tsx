@@ -21,13 +21,7 @@ import HashLoader from "react-spinners/HashLoader";
 function AllItemsPage() {
   const [filter, setFilter] = useState<Record<string, unknown>>({});
 
-  const {
-    mutate: getAllMenu,
-    data,
-    isPending,
-    isError,
-    isSuccess,
-  } = useGetMenu();
+  const { mutate: getAllMenu, data, isPending } = useGetMenu();
 
   useEffect(() => {
     if (filter.category === "all") {

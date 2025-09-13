@@ -1,24 +1,28 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Pencil, Trash2, BadgeCheck } from "lucide-react";
+import { Pencil, Trash2, BadgeCheck, ArchiveRestore } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
 import Link from "next/link";
 
 export interface MenuItemCardProps {
   _id?: string;
-  image: string;
-  itemName: string;
   category: {
-    _id: string;
+    _id?: string;
     catName: string;
     isDeleted: boolean;
     createdAt: string;
     updatedAt: string;
     __v: number;
   };
+  itemName: string;
   price: number;
   description: string;
+  image: string;
+  isDeleted: boolean;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 }
 
 export default function MenuItemCard({
@@ -28,6 +32,7 @@ export default function MenuItemCard({
   category,
   price,
   description,
+  isDeleted,
 }: MenuItemCardProps) {
   return (
     <Card className="w-full max-w-xs shadow-md rounded-xl overflow-hidden">
@@ -60,24 +65,37 @@ export default function MenuItemCard({
       <CardContent className="px-3">
         <p className="text-xs text-black line-clamp-2 mb-3">{description}</p>
         <div className="flex gap-2">
-          <Link href={`/admin-management/all-items/${_id}`}>
+          {!isDeleted && (
+            <Link href={`/admin-management/all-items/${_id}`}>
+              <Button
+                size="sm"
+                variant="outline"
+                className="flex items-center gap-1 text-xs text-white cursor-pointer hover:bg-black/90 hover:text-white"
+              >
+                <Pencil className="w-3 h-3" />
+                Update
+              </Button>
+            </Link>
+          )}
+          {!isDeleted ? (
             <Button
               size="sm"
-              variant="outline"
-              className="flex items-center gap-1 text-xs text-white cursor-pointer hover:bg-black/90 hover:text-white"
+              variant="destructive"
+              className="flex items-center gap-1 text-xs cursor-pointer"
             >
-              <Pencil className="w-3 h-3" />
-              Update
+              <Trash2 className="w-3 h-3" />
+              Delete
             </Button>
-          </Link>
-          <Button
-            size="sm"
-            variant="destructive"
-            className="flex items-center gap-1 text-xs cursor-pointer"
-          >
-            <Trash2 className="w-3 h-3" />
-            Delete
-          </Button>
+          ) : (
+            <Button
+              size="sm"
+              variant="default"
+              className="flex items-center gap-1 text-xs cursor-pointer bg-green-700 hover:bg-green-700/90"
+            >
+              <ArchiveRestore className="w-3 h-3" />
+              Restore
+            </Button>
+          )}
         </div>
       </CardContent>
     </Card>
