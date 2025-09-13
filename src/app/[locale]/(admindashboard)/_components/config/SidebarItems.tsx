@@ -3,6 +3,7 @@ import {
   FileSymlink,
   LucideIcon,
   PackagePlus,
+  Trash,
   Utensils,
 } from "lucide-react";
 import {
@@ -31,6 +32,11 @@ export const sidebarAdminNavItems: NavSection = {
       href: "/admin-management/all-items",
       label: "All Items",
       icon: Utensils,
+    },
+    {
+      href: "/admin-management/deleted-items",
+      label: "Deleted Items",
+      icon: Trash,
     },
     {
       href: "/admin-management/add-item",

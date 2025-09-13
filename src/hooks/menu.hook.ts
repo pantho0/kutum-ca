@@ -2,6 +2,7 @@
 import { IMenu } from "@/interface";
 import {
   addMenuItem,
+  getDeletedMenu,
   getMenu,
   getSingleMenu,
   updateMenu,
@@ -47,5 +48,12 @@ export const useAddMenuItem = () => {
     onError: () => {
       toast.error("Failed to add menu item", { duration: 2000 });
     },
+  });
+};
+
+export const useGetDeletedMenu = () => {
+  return useMutation({
+    mutationKey: ["menu"],
+    mutationFn: async () => getDeletedMenu(),
   });
 };
