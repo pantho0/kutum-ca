@@ -2,6 +2,7 @@
 import { IMenu } from "@/interface";
 import {
   addMenuItem,
+  deleteMenuItems,
   getDeletedMenu,
   getMenu,
   getSingleMenu,
@@ -55,5 +56,12 @@ export const useGetDeletedMenu = () => {
   return useQuery({
     queryKey: ["menu"],
     queryFn: async () => getDeletedMenu(),
+  });
+};
+
+export const useDeleteMenu = () => {
+  return useMutation({
+    mutationKey: ["menu"],
+    mutationFn: async (id: string) => deleteMenuItems(id),
   });
 };

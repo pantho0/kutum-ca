@@ -4,6 +4,8 @@ import { Pencil, Trash2, BadgeCheck, ArchiveRestore } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
 import Link from "next/link";
+import { useDeleteMenu } from "@/hooks/menu.hook";
+import { toast } from "sonner";
 
 export interface MenuItemCardProps {
   _id?: string;
@@ -34,6 +36,24 @@ export default function MenuItemCard({
   description,
   isDeleted,
 }: MenuItemCardProps) {
+  const { mutate: handleDeleteRestore } = useDeleteMenu();
+
+  const handleDelete = (_id: string) => {
+    handleDeleteRestore(_id, {
+      onSuccess: () => {
+        toast.success("Menu item deleted successfully", { duration: 2000 });
+      },
+    });
+  };
+
+  const handleRestore = (_id: string) => {
+    handleDeleteRestore(_id, {
+      onSuccess: () => {
+        toast.success("Menu item restored successfully", { duration: 2000 });
+      },
+    });
+  };
+
   return (
     <Card className="w-full max-w-xs shadow-md rounded-xl overflow-hidden">
       {/* Image Section */}
@@ -79,6 +99,7 @@ export default function MenuItemCard({
           )}
           {!isDeleted ? (
             <Button
+              onClick={() => handleDelete(_id!)}
               size="sm"
               variant="destructive"
               className="flex items-center gap-1 text-xs cursor-pointer"
@@ -88,6 +109,7 @@ export default function MenuItemCard({
             </Button>
           ) : (
             <Button
+              onClick={() => handleRestore(_id!)}
               size="sm"
               variant="default"
               className="flex items-center gap-1 text-xs cursor-pointer bg-green-700 hover:bg-green-700/90"

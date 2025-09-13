@@ -2,6 +2,7 @@
 
 import { IMenu } from "@/interface";
 import axiosInstance from "@/lib/AxiosInstance";
+import { revalidateTag } from "next/cache";
 
 export const getMenu = async (query?: Record<string, unknown>) => {
   try {
@@ -73,6 +74,22 @@ export const getDeletedMenu = async () => {
     }
     return res.data;
   } catch (error: any) {
+    throw new Error(
+      error.response?.data?.message || error.message || "Error fetching data"
+    );
+  }
+};
+
+export const deleteMenuItems = async (id: string) => {
+  try {
+    const res = await axiosInstance.delete(`/menus/${id}`);
+    if (!res.data.success) {
+      throw new Error(res.data.message || "Error deleting menu item");
+    }
+
+    return res.data;
+  } catch (error: any) {
+    console.log(error);
     throw new Error(
       error.response?.data?.message || error.message || "Error fetching data"
     );
