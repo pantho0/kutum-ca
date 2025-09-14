@@ -1,8 +1,10 @@
+import { getCurrentUser } from "@/services/auth";
 import {
   createContext,
   Dispatch,
   ReactNode,
   SetStateAction,
+  useEffect,
   useState,
 } from "react";
 
@@ -27,6 +29,17 @@ const UserContext = createContext<UserProviderProps | undefined>(undefined);
 const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<IUserContext | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const handleUser = async () => {
+    const user = await getCurrentUser();
+
+    setUser(user);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    handleUser();
+  }, [loading]);
 
   return (
     <UserContext.Provider value={{ user, setUser, loading, setLoading }}>

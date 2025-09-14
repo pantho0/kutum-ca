@@ -2,6 +2,7 @@
 import axiosInstance from "@/lib/AxiosInstance";
 import { cookies } from "next/headers";
 import { FieldValues } from "react-hook-form";
+import { jwtDecode } from "jwt-decode";
 
 export const loginUser = async (userData: FieldValues) => {
   try {
@@ -21,4 +22,23 @@ export const loginUser = async (userData: FieldValues) => {
     console.log(error);
     throw new Error(error);
   }
+};
+
+export const getCurrentUser = async () => {
+  const accessToken = (await cookies()).get("accessToken")?.value;
+
+  let decodedToken = null;
+
+  if (accessToken) {
+    decodedToken = await jwtDecode(accessToken);
+  }
+
+  return {
+    userId: decodedToken?.userId,
+    fullName: decodedToken?.fullName,
+    role: decodedToken?.role,
+    email: decodedToken?.email,
+    iat: decodedToken?.iat,
+    exp: decodedToken?.exp,
+  };
 };
