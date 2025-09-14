@@ -7,6 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import BannerPlate from "@/components/ui/BannerPlate";
+import Link from "next/link";
 
 const Banner = () => {
   const t = useTranslations("Homepage");
@@ -94,7 +95,7 @@ const Banner = () => {
             size="lg"
             className="md:text-left bg-green-800 text-white desc-animation lg:max-w-1/2 w-42 h-16 rounded-none  hover:cursor-pointer hover:bg-green-800/80"
           >
-            Explore Menu
+            <Link href="/menu">Explore Menu</Link>
           </Button>
         </div>
         <div className="hidden md:hidden lg:block">

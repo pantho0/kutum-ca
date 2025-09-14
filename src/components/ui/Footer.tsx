@@ -125,13 +125,19 @@ const Footer = () => {
       <div className="border-t border-green-800">
         <div className="container mx-auto max-w-7xl px-5 py-6 flex flex-col md:flex-row justify-between items-center text-sm">
           <p className="mb-4 md:mb-0">
-            © Copyright Bermiz Theme for Restaurant & Cafe.
+            © Copyright Kutum Theme for Restaurant & Cafe.
           </p>
           <div className="flex space-x-6">
-            <a href="#" className="hover:text-green-800/80 transition-colors">
+            <a
+              href="#"
+              className="text-gray-500 hover:text-green-800/80 transition-colors"
+            >
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-green-800/80 transition-colors">
+            <a
+              href="#"
+              className="text-gray-500 hover:text-green-800/80 transition-colors"
+            >
               Terms Of Use
             </a>
           </div>

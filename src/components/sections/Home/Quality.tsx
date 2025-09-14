@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import sprinklesalt from "../../../../public/images/food1.jpg";
 import restaurantInterior from "../../../../public/images/restaurant.png";
+import Link from "next/link";
 
 const imgFoodSalt = sprinklesalt;
 const imgRestaurantInterior = restaurantInterior;
@@ -129,9 +130,11 @@ const Quality = () => {
           </div>
 
           <div className="pt-2 flex justify-center md:justify-start">
-            <Button className="bg-green-800 px-8 py-8 text-base text-white hover:bg-green-800/80 rounded-none hover:text-white hover:cursor-pointer">
-              Make A Reservation
-            </Button>
+            <Link href="/reservation">
+              <Button className="bg-green-800 px-8 py-8 text-base text-white hover:bg-green-800/80 rounded-none hover:text-white hover:cursor-pointer">
+                Make A Reservation
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 const img1 = "/images/shortbio1.webp";
 const img2 = "/images/shortbio2.webp";
@@ -127,7 +128,7 @@ const ShortBio = () => {
 
         <div className="pt-2 flex justify-center md:justify-start">
           <Button className="bg-green-800 text-white px-8 py-8 text-base hover:bg-green-800/80 hover:border-1  rounded-none hover:cursor-pointer">
-            {t("ExploreUs")}
+            <Link href="/about">{t("ExploreUs")}s</Link>
           </Button>
         </div>
       </div>

@@ -38,7 +38,7 @@ const Navbar = () => {
       <div className="hidden md:hidden lg:flex gap-2 items-center">
         <ul className="flex gap-5 font-medium text-xl hover:cursor-pointer items-center">
           {navItems.map((item) => (
-            <li key={item.key} className="hover:text-primary">
+            <li key={item.key} className="hover:text-green-800/70">
               <Link href={item.key}>{item.label}</Link>
             </li>
           ))}

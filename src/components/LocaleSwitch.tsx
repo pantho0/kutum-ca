@@ -8,7 +8,11 @@ const LocaleSwitch = () => {
     <>
       <LanguageSwitcher defaultValue={locale} label="Select a locale">
         {routing.locales.map((cur) => (
-          <option key={cur} value={cur}>
+          <option
+            key={cur}
+            value={cur}
+            className="capitalize text-sm text-green-800"
+          >
             {cur}
           </option>
         ))}
