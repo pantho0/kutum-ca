@@ -1,10 +1,23 @@
-import { addUser, changeUserStatus, getAllUser } from "@/services/user";
+import {
+  addUser,
+  changeUserStatus,
+  getAllUser,
+  getSingleUser,
+} from "@/services/user";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useGetAllUser = () => {
   const query = useQuery({
     queryKey: ["users"],
     queryFn: getAllUser,
+  });
+  return query;
+};
+
+export const useGetSingleUser = (id: string) => {
+  const query = useQuery({
+    queryKey: ["user", id],
+    queryFn: () => getSingleUser(id),
   });
   return query;
 };

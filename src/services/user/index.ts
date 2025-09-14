@@ -17,6 +17,20 @@ export const getAllUser = async () => {
   }
 };
 
+export const getSingleUser = async (id: string) => {
+  try {
+    const response = await axiosInstance.get(`/users/${id}`);
+    if (!response.data.success) {
+      throw new Error(response.data.message || "Error fetching user");
+    }
+    return response.data;
+  } catch (error: any) {
+    throw new Error(
+      error.response?.data?.message || error.message || "Error fetching data"
+    );
+  }
+};
+
 export const addUser = async (user: any) => {
   try {
     const response = await axiosInstance.post("/users", user);
