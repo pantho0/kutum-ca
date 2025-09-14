@@ -27,10 +27,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 text-center md:text-left">
           {/* Column 1: About Bermiz */}
           <div className="flex flex-col items-center md:items-start space-y-6">
-            <h2 className="text-lg font-semibold uppercase tracking-wider text-white">
+            <h2 className="text-lg font-semibold uppercase tracking-wider text-green-800">
               About Kutum
             </h2>
-            <p className="leading-relaxed max-w-sm">
+            <p className="leading-relaxed max-w-sm text-gray-500">
               Vitae neque libero ullamcorper gravida fusce donec feugiat massa
               dui. Turpis massa et ipsum orci, sem commodo. Sapien hendrerit
               cursus eros.
@@ -39,28 +39,28 @@ const Footer = () => {
               <a
                 href="#"
                 aria-label="Facebook"
-                className="text-neutral-400 hover:text-primary transition-colors"
+                className="text-green-800 hover:text-green-800/80 transition-colors"
               >
                 <Facebook size={20} />
               </a>
               <a
                 href="#"
                 aria-label="Twitter"
-                className="text-neutral-400 hover:text-primary transition-colors"
+                className="text-green-800 hover:text-green-800/80 transition-colors"
               >
                 <Twitter size={20} />
               </a>
               <a
                 href="#"
                 aria-label="Instagram"
-                className="text-neutral-400 hover:text-primary transition-colors"
+                className="text-green-800 hover:text-green-800/80 transition-colors"
               >
                 <Instagram size={20} />
               </a>
               <a
                 href="#"
                 aria-label="YouTube"
-                className="text-neutral-400 hover:text-primary transition-colors"
+                className="text-green-800 hover:text-green-800/80 transition-colors"
               >
                 <Youtube size={20} />
               </a>
@@ -69,10 +69,10 @@ const Footer = () => {
 
           {/* Column 2: Newsletter */}
           <div className="flex flex-col items-center md:items-start space-y-6">
-            <h2 className="text-lg font-semibold uppercase tracking-wider text-white">
+            <h2 className="text-lg font-semibold uppercase tracking-wider text-green-800">
               Newsletter
             </h2>
-            <p className="leading-relaxed">
+            <p className="leading-relaxed text-gray-500">
               Subscribe & get 10% discount. Get E-mail updates about our latest
               shop and special offers.
             </p>
@@ -80,7 +80,7 @@ const Footer = () => {
               <Input
                 type="email"
                 placeholder="Your Email Address"
-                className="bg-transparent border-0 border-b border-neutral-600 rounded-none focus:ring-0 focus:border-primary placeholder:text-neutral-500 py-6 pl-0"
+                className="bg-transparent border-0 border-b border-neutral-600 rounded-none placeholder:text-neutral-500 py-6 pl-0"
               />
               <Button
                 type="submit"
@@ -95,17 +95,15 @@ const Footer = () => {
 
           {/* Column 3: Contact Us */}
           <div className="flex flex-col items-center md:items-start space-y-4">
-            <h2 className="text-lg font-semibold uppercase tracking-wider text-white">
+            <h2 className="text-lg font-semibold uppercase tracking-wider text-green-800">
               Contact Us
             </h2>
-            <address className="not-italic leading-relaxed space-y-4">
-              <p>
-                Bermiz Restaurant & Fine dining 71 Madison Ave, New York, USA
-              </p>
+            <address className="not-italic leading-relaxed space-y-4 text-gray-500">
+              <p>Kutum Restaurant, 71 Madison Ave, New York, USA</p>
               <p>
                 <a
                   href="tel:+12345678899"
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-green-800/80 text-gray-500 transition-colors"
                 >
                   +1(234)567 8899
                 </a>
@@ -113,7 +111,7 @@ const Footer = () => {
               <p>
                 <a
                   href="mailto:booking@bermiz.com"
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-green-800/80 text-gray-500 transition-colors"
                 >
                   booking@bermiz.com
                 </a>
@@ -124,16 +122,16 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-neutral-800">
+      <div className="border-t border-green-800">
         <div className="container mx-auto max-w-7xl px-5 py-6 flex flex-col md:flex-row justify-between items-center text-sm">
           <p className="mb-4 md:mb-0">
             © Copyright Bermiz Theme for Restaurant & Cafe.
           </p>
           <div className="flex space-x-6">
-            <a href="#" className="hover:text-white transition-colors">
+            <a href="#" className="hover:text-green-800/80 transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-white transition-colors">
+            <a href="#" className="hover:text-green-800/80 transition-colors">
               Terms Of Use
             </a>
           </div>

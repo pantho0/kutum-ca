@@ -65,11 +65,6 @@ export const sidebarAdminNavItems: NavSection = {
       label: "User Management",
       icon: UserCog,
     },
-    {
-      href: "/admin-management/settings",
-      label: "Settings",
-      icon: Settings,
-    },
   ],
   reservations: [
     {

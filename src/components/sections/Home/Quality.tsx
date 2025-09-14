@@ -68,7 +68,7 @@ const Quality = () => {
       className="container mx-auto px-5 md:px-0 max-w-6xl py-12 md:py-28 text-white"
     >
       {/* Main Heading */}
-      <h1 className="text-center text-4xl sm:text-5xl lg:text-6xl font-elsie font-medium leading-tight mb-16 px-4">
+      <h1 className="text-center text-4xl sm:text-5xl text-green-800 font-bold lg:text-6xl font-elsie leading-tight mb-16 px-4">
         Various Quality Specialities Made With A Personal Touch
       </h1>
 
@@ -102,7 +102,7 @@ const Quality = () => {
 
         {/* Right Column: Text Content */}
         <div className="mt-20 md:mt-0 flex flex-col justify-center space-y-7 chef-secret-text-content">
-          <div className="flex items-center space-x-2 text-primary">
+          <div className="flex items-center space-x-2 text-green-800">
             <Star size={18} fill="currentColor" />
             <h3 className="text-sm font-sans uppercase md:text-2xl">
               CHEFS SECRETS
@@ -110,11 +110,11 @@ const Quality = () => {
             <Star size={18} fill="currentColor" />
           </div>
 
-          <h2 className="text-4xl font-elsie font-medium leading-tight sm:text-5xl lg:text-6xl">
+          <h2 className="text-4xl font-elsie text-green-800 leading-tight sm:text-5xl lg:text-6xl">
             Truly Exotic & Appetizing Cuisine For Thous Special Moments In Life
           </h2>
 
-          <p className="text-neutral-400 md:text-lg font-sans">
+          <p className="text-gray-500 md:text-lg font-sans">
             Nam turpis quis fermentum egestas nibh diam feugiat faucibus.
             Commodo tellus lorem fames mauris, at praesent gravida. Porttitor eu
             eu sed vestibulum, tortor cursus nunc. Sit egestas diam quam integer
@@ -122,16 +122,14 @@ const Quality = () => {
           </p>
 
           <div className="space-y-2 pt-4">
-            <p className="text-neutral-400 font-sans text-lg">
-              Booking Request
-            </p>
-            <h4 className="text-4xl font-elsie text-primary">
+            <p className="text-gray-500 font-sans text-lg">Booking Request</p>
+            <h4 className="text-4xl font-elsie text-green-800">
               +01-2345-678-990
             </h4>
           </div>
 
           <div className="pt-2 flex justify-center md:justify-start">
-            <Button className="bg-primary px-8 py-8 text-base text-black hover:bg-secondary hover:border-1 hover:border-primary rounded-none hover:text-foreground hover:cursor-pointer">
+            <Button className="bg-green-800 px-8 py-8 text-base text-white hover:bg-green-800/80 rounded-none hover:text-white hover:cursor-pointer">
               Make A Reservation
             </Button>
           </div>

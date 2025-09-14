@@ -14,8 +14,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: #0b1315;
-  --color-foreground: #ffffff;
+  --color-background: #e5e4e2;
+  --color-foreground: #008000;
   --font-sans: "Lexend", sans-serif;
   --font-elsie: "Elsie", sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
