@@ -103,17 +103,17 @@ const MenuSection = () => {
       <div className="container mx-auto max-w-7xl px-5">
         {/* Header */}
         <div className="text-center mb-12 menu-header">
-          <div className="flex items-center justify-center space-x-2 text-primary mb-4">
+          <div className="flex items-center justify-center space-x-2 text-green-800 mb-4">
             <Star size={16} fill="currentColor" />
-            <h3 className="text-sm font-sans uppercase tracking-widest">
+            <h3 className="text-sm font-sans text-green-800 uppercase tracking-widest">
               OUR MENU
             </h3>
             <Star size={16} fill="currentColor" />
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-elsie font-medium mb-4">
+          <h1 className="text-4xl text-green-800 sm:text-5xl lg:text-6xl font-elsie font-medium mb-4">
             Tasty With Good Price
           </h1>
-          <p className="max-w-3xl mx-auto text-neutral-400 leading-relaxed">
+          <p className="max-w-3xl mx-auto text-gray-500 leading-relaxed">
             Diam leo massa pellentesque a neque turpis cum mi gravida. Amet
             massa adipiscing mi dictum urna commodo. Fringilla ipsum etiam
             habitasse dolor lacus viverra.
@@ -126,7 +126,7 @@ const MenuSection = () => {
               key={"all"}
               value={"all"}
               onChange={() => setActiveTab("all")}
-              className="flex flex-col items-center cursor-pointer justify-center gap-2 h-28 text-neutral-400 data-[state=active]:text-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none transition-colors duration-300"
+              className="flex flex-col items-center cursor-pointer justify-center gap-2 h-28 text-neutral-400 data-[state=active]:text-green-800 data-[state=active]:bg-transparent data-[state=active]:shadow-none transition-colors duration-300"
             >
               <Utensils />
               <span className="text-lg font-medium">{"ALL"}</span>
@@ -136,7 +136,7 @@ const MenuSection = () => {
                 key={tab}
                 value={tab}
                 onChange={() => setActiveTab(tab)}
-                className="flex flex-col items-center cursor-pointer justify-center gap-2 h-28 text-neutral-400 data-[state=active]:text-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none transition-colors duration-300"
+                className="flex flex-col items-center cursor-pointer justify-center gap-2 h-28 text-gray-600 data-[state=active]:text-green-800 data-[state=active]:bg-transparent data-[state=active]:shadow-none transition-colors duration-300"
               >
                 {(tab === "all" && <Utensils />) ||
                   (tab === "breakfast" && <Coffee />) ||
@@ -156,7 +156,9 @@ const MenuSection = () => {
             >
               {menuItems?.length === 0 ? (
                 <div className="col-span-12">
-                  <p className="text-center">No menu items found</p>
+                  <p className="text-center text-gray-500">
+                    No menu items found
+                  </p>
                 </div>
               ) : (
                 menuItems?.map((item, index) => (
@@ -174,13 +176,11 @@ const MenuSection = () => {
                       />
                     </div>
                     <div className="flex-grow">
-                      <h3 className="text-2xl font-elsie text-white">
+                      <h3 className="text-2xl font-elsie text-green-800">
                         {item.itemName}
                       </h3>
-                      <p className="text-neutral-400 my-2">
-                        {item.description}
-                      </p>
-                      <p className="text-xl font-bold text-primary">
+                      <p className="my-2 text-gray-500">{item.description}</p>
+                      <p className="text-xl font-bold text-green-800">
                         ${item.price}
                       </p>
                     </div>

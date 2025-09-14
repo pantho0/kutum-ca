@@ -15,25 +15,25 @@ if (typeof window !== "undefined") {
 // Data for the services
 const services = [
   {
-    icon: <Sun className="h-10 w-10 text-primary" />,
+    icon: <Sun className="h-10 w-10 text-green-800" />,
     title: "Lunch",
     description:
       "Lacus, risus, diam sit gravida phasellus pretium sodales. Cursus rutrum lorem nulla eu amet mattis.",
   },
   {
-    icon: <Moon className="h-10 w-10 text-primary" />,
+    icon: <Moon className="h-10 w-10 text-green-800" />,
     title: "Dinner",
     description:
       "Amet, ac enim sed morbi pretium. Scelerisque id in nisi ullamcorper. Bibendum sit viverra enim.",
   },
   {
-    icon: <Cake className="h-10 w-10 text-primary" />,
+    icon: <Cake className="h-10 w-10 text-green-800" />,
     title: "Birthday",
     description:
       "Lacus, risus, diam sit gravida phasellus pretium sodales. Cursus rutrum lorem nulla eu amet mattis.",
   },
   {
-    icon: <UtensilsCrossed className="h-10 w-10 text-primary" />,
+    icon: <UtensilsCrossed className="h-10 w-10 text-green-800" />,
     title: "Catering",
     description:
       "Nullam quis tristique scelerisque proin. Ultricies augue hac eu aliquet in. Urna mattis a gravida.",
@@ -92,7 +92,7 @@ const WhyChooseUs = () => {
   return (
     <section
       ref={container}
-      className="text-white py-20 md:py-28"
+      className="text-green-800 py-20 md:py-28"
       style={{
         backgroundImage: `url('/images/whychooseusbg.png')`,
         backgroundSize: "cover",
@@ -105,7 +105,7 @@ const WhyChooseUs = () => {
         <div className="mb-16 section-header">
           <div className="flex items-center justify-center space-x-2 text-primary mb-4">
             <Star size={16} fill="currentColor" />
-            <h3 className="text-sm font-sans uppercase tracking-widest">
+            <h3 className="text-sm font-sans text-green-800 uppercase tracking-widest">
               SERVICES
             </h3>
             <Star size={16} fill="currentColor" />
@@ -122,14 +122,14 @@ const WhyChooseUs = () => {
               key={index}
               className="flex flex-col items-center space-y-6 service-item"
             >
-              <div className="flex h-24 w-24 items-center justify-center rounded-full border-2 border-primary/50 bg-black/20 transition-all duration-300 hover:border-primary hover:bg-primary/10">
+              <div className="flex h-24 w-24 text-green-800 items-center justify-center rounded-full border-2 border-green-800/50 bg-black/20 transition-all duration-300 hover:border-green-800 hover:bg-green-800/10">
                 {service.icon}
               </div>
               <div className="space-y-3">
-                <h2 className="text-3xl font-elsie text-white">
+                <h2 className="text-3xl font-elsie text-green-800">
                   {service.title}
                 </h2>
-                <p className="text-neutral-400 leading-relaxed">
+                <p className="text-gray-500 leading-relaxed">
                   {service.description}
                 </p>
               </div>

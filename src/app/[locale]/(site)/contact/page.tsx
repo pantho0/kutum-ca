@@ -70,7 +70,7 @@ const Contact = () => {
   );
 
   return (
-    <section ref={container} className="text-white py-20 md:py-28">
+    <section ref={container} className="text-green-800 py-20 md:py-28">
       <div className="container mx-auto max-w-7xl px-5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Column: Form */}
@@ -79,7 +79,7 @@ const Contact = () => {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-elsie font-medium mb-4">
                 Got Any Questions?
               </h1>
-              <p className="text-neutral-400 text-lg">
+              <p className="text-gray-500 text-lg">
                 Use the form below to get in touch with the support team.
               </p>
             </div>
@@ -90,7 +90,7 @@ const Contact = () => {
                 <Input
                   type="text"
                   placeholder="Name"
-                  className="pl-4 pr-12 py-7 bg-transparent border-0 border-b border-neutral-600 rounded-none focus:ring-0 focus:border-primary placeholder:text-neutral-400 text-lg"
+                  className="pl-4 pr-12 py-7 bg-transparent border-0 border-b border-gray-500 rounded-none focus:ring-0 focus:border-primary placeholder:text-gray-500 text-lg"
                 />
                 <User className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary" />
               </div>
@@ -100,7 +100,7 @@ const Contact = () => {
                 <Input
                   type="email"
                   placeholder="Email Address"
-                  className="pl-4 pr-12 py-7 bg-transparent border-0 border-b border-neutral-600 rounded-none focus:ring-0 focus:border-primary placeholder:text-neutral-400 text-lg"
+                  className="pl-4 pr-12 py-7 bg-transparent border-0 border-b border-gray-500 rounded-none focus:ring-0 focus:border-primary placeholder:text-gray-500 text-lg"
                 />
                 <Mail className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary" />
               </div>
@@ -110,7 +110,7 @@ const Contact = () => {
                 <Input
                   type="tel"
                   placeholder="Phone Number"
-                  className="pl-4 pr-12 py-7 bg-transparent border-0 border-b border-neutral-600 rounded-none focus:ring-0 focus:border-primary placeholder:text-neutral-400 text-lg"
+                  className="pl-4 pr-12 py-7 bg-transparent border-0 border-b border-gray-500 rounded-none focus:ring-0 focus:border-primary placeholder:text-gray-500 text-lg"
                 />
                 <Phone className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary" />
               </div>
@@ -119,7 +119,7 @@ const Contact = () => {
               <div className="relative contact-form-field">
                 <Textarea
                   placeholder="Message"
-                  className="pl-4 pr-12 py-7 bg-transparent border-0 border-b border-neutral-600 rounded-none focus:ring-0 focus:border-primary placeholder:text-neutral-400 text-lg min-h-[120px]"
+                  className="pl-4 pr-12 py-7 bg-transparent border-0 border-b border-gray-500 rounded-none focus:ring-0 focus:border-primary placeholder:text-gray-500 text-lg min-h-[120px]"
                 />
                 <LinkIcon className="absolute right-3 top-6 h-5 w-5 text-primary" />
               </div>
@@ -128,7 +128,7 @@ const Contact = () => {
               <div className="pt-4 contact-form-field">
                 <Button
                   type="submit"
-                  className="bg-primary px-10 py-7 text-base text-black hover:bg-secondary hover:border hover:border-primary rounded-none hover:text-foreground w-full sm:w-auto"
+                  className="bg-green-800 text-white px-10 py-7 text-base hover:bg-green-800/80 hover:border hover:text-white cursor-pointer w-full sm:w-auto"
                 >
                   Send Your Message
                 </Button>

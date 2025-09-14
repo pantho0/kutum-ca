@@ -69,11 +69,11 @@ const MeetTheOwners = () => {
   );
 
   return (
-    <section ref={container} className="text-white py-20 md:py-28">
+    <section ref={container} className="text-green-800 py-20 md:py-28">
       <div className="container mx-auto max-w-5xl px-5 text-center">
         {/* Section Header */}
         <div className="mb-16 owners-header">
-          <div className="flex items-center justify-center space-x-2 text-primary mb-4">
+          <div className="flex items-center justify-center space-x-2 text-green-800 mb-4">
             <Star size={16} fill="currentColor" />
             <h3 className="text-sm font-sans uppercase tracking-widest">
               AMAZING TEAM
@@ -101,10 +101,10 @@ const MeetTheOwners = () => {
                   className="transition-transform duration-500 hover:scale-105"
                 />
               </div>
-              <h2 className="text-3xl font-elsie text-white mb-2">
+              <h2 className="text-3xl font-elsie text-green-800 mb-2">
                 {owner.name}
               </h2>
-              <p className="text-neutral-400 font-sans">{owner.speciality}</p>
+              <p className="text-gray-500 font-sans">{owner.speciality}</p>
             </div>
           ))}
         </div>
