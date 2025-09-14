@@ -24,6 +24,12 @@ export const loginUser = async (userData: FieldValues) => {
   }
 };
 
+export const logoutUser = async () => {
+  (await cookies()).delete("accessToken");
+  (await cookies()).delete("refreshToken");
+  // (await cookies()).set("next-auth.session-token", "");
+};
+
 export const getCurrentUser = async () => {
   const accessToken = (await cookies()).get("accessToken")?.value;
 

@@ -3,7 +3,7 @@ import React from "react";
 import "../globals.css";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
-import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 
@@ -22,14 +22,10 @@ export default async function SiteLayout({
   }
 
   return (
-    <html lang={locale}>
-      <body className={`antialiased`}>
-        <NextIntlClientProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <>
+      <Navbar />
+      {children}
+      <Footer />
+    </>
   );
 }

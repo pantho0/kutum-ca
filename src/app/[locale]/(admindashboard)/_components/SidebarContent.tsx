@@ -11,6 +11,8 @@ import { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
 import { Badge } from "@/components/ui/badge";
 import { sidebarAdminNavItems } from "./config/SidebarItems";
+import { useUser } from "@/context/user.provider";
+import { logoutUser } from "@/services/auth";
 
 interface NavItemProps {
   href: string;
@@ -20,14 +22,12 @@ interface NavItemProps {
 }
 
 export function SidebarContent({ onLinkClick }: { onLinkClick?: () => void }) {
-  //   const token = useAppSelector(selectCurrentToken);
-  //   const user: any = verifyToken(token as string);
-  //   const dispatch = useAppDispatch();
+  const { user, loading, setLoading } = useUser();
+  console.log(loading);
   const router = useRouter();
 
   const [mounted, setMounted] = useState(false);
   const [clickedLogout, setClickedLogut] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   const NavItem = ({ href, label, icon: Icon, badge }: NavItemProps) => {
     const pathname = usePathname();
@@ -63,38 +63,18 @@ export function SidebarContent({ onLinkClick }: { onLinkClick?: () => void }) {
 
   const handleLogout = async () => {
     setClickedLogut(true);
-    try {
-      //   await serverLogout();
-      document.cookie =
-        "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-      document.cookie =
-        "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-    } catch (error) {
-      if (error instanceof Error && error.message.includes("NEXT_REDIRECT")) {
-        console.log("Logout redirect initiated by server action.");
-      } else {
-        console.error("Error during server-side logout:", error);
-      }
-    }
-    // dispatch(logOut());
+    logoutUser();
+    router.push("/");
+    setClickedLogut(false);
   };
 
   useEffect(() => {
-    if (clickedLogout === true) {
-      router.push("/");
-      router.refresh();
-    }
-  }, [clickedLogout]);
-
-  useEffect(() => {
     setMounted(true);
-    // Simulate a loading delay to show the spinner
     const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500); // Adjust delay as needed
-
+      setLoading(false);
+    }, 500);
     return () => clearTimeout(timer);
-  }, []);
+  }, [setLoading]);
 
   return (
     <>
@@ -128,7 +108,7 @@ export function SidebarContent({ onLinkClick }: { onLinkClick?: () => void }) {
             </div>
           )}
 
-          {isLoading ? (
+          {loading ? (
             <div className="flex flex-col items-center justify-center h-full">
               <HashLoader color="#fff" />
             </div>
@@ -143,11 +123,24 @@ export function SidebarContent({ onLinkClick }: { onLinkClick?: () => void }) {
                       alt="User"
                       className="bg-gray-600"
                     />
-                    <AvatarFallback className="bg-gray-600">SG</AvatarFallback>
+                    <AvatarFallback className="bg-gray-600">US</AvatarFallback>
                   </Avatar>
                   <div>
-                    <p className="font-semibold text-white">{"Admin"}</p>
-                    <p className="text-xs text-gray-400">{"demo@email.com"}</p>
+                    {loading ? (
+                      <div className="space-y-2">
+                        <div className="h-4 w-24 bg-gray-600 rounded animate-pulse"></div>
+                        <div className="h-3 w-32 bg-gray-600 rounded animate-pulse"></div>
+                      </div>
+                    ) : (
+                      <>
+                        <p className="font-semibold text-white">
+                          {user?.fullName || "User"}
+                        </p>
+                        <p className="text-xs text-gray-400">
+                          {user?.email || "user@example.com"}
+                        </p>
+                      </>
+                    )}
                   </div>
                 </div>
 

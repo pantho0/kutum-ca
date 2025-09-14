@@ -2,13 +2,12 @@
 import CustomForm from "@/components/customform/CustomForm";
 import CustomInput from "@/components/customform/CustomInput";
 import { Button } from "@/components/ui/button";
-import React from "react";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { useLogin } from "@/hooks/auth.hook";
 
 const LoginPage = () => {
-  const { mutate: handleLogin, isPending } = useLogin();
-
+  const { mutate: handleLogin } = useLogin();
+  
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     handleLogin(data);
   };
