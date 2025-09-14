@@ -10,6 +10,7 @@ interface CustomInputProps {
   label: ReactNode;
   defaultValue?: string;
   disabled?: boolean;
+  fontColor?: string;
 }
 
 function CustomInput({
@@ -19,6 +20,7 @@ function CustomInput({
   label,
   defaultValue = "",
   disabled,
+  fontColor = "text-black",
 }: CustomInputProps) {
   const {
     formState: { errors },
@@ -33,7 +35,7 @@ function CustomInput({
           <>
             <label
               htmlFor={name}
-              className="block text-sm font-medium text-black mb-1 font-sans"
+              className={`block text-sm font-medium ${fontColor} mb-1 font-sans`}
             >
               {label}
             </label>

@@ -2,7 +2,6 @@
 
 import { IMenu } from "@/interface";
 import axiosInstance from "@/lib/AxiosInstance";
-import { revalidateTag } from "next/cache";
 
 export const getMenu = async (query?: Record<string, unknown>) => {
   try {

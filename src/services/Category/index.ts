@@ -27,7 +27,6 @@ export const addCategory = async (categoryData: any) => {
     revalidateTag("categories");
     return res.data;
   } catch (error: any) {
-    console.log(error);
     throw new Error(
       error.response?.data?.message || error.message || "Error fetching data"
     );
