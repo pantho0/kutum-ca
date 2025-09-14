@@ -29,3 +29,17 @@ export const addUser = async (user: any) => {
     );
   }
 };
+
+export const changeUserStatus = async (id: string) => {
+  try {
+    const response = await axiosInstance.put(`/users/delete-user`, { id });
+    if (!response.data.success) {
+      throw new Error(response.data.message || "Error changing user status");
+    }
+    return response.data;
+  } catch (error: any) {
+    throw new Error(
+      error.response?.data?.message || error.message || "Error fetching data"
+    );
+  }
+};
