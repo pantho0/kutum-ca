@@ -1,7 +1,125 @@
-import React from "react";
+"use client";
 
-function ProfilePage() {
-  return <div className="text-black">ProfilePage</div>;
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { useUser } from "@/context/user.provider";
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { Image as LucideImg, Lock, Mail, ShoppingCart } from "lucide-react";
+import Link from "next/link";
+
+export interface IUserProfile {
+  name: string;
+  email: string | undefined;
+  avatarUrl: string;
 }
+
+const ProfilePage: React.FC = () => {
+  const { user } = useUser();
+
+  const userProfile: any = {
+    name: user?.fullName,
+    email: user?.email,
+    avatarUrl: "https://github.com/shadcn.png",
+  };
+
+  return (
+    <div className="min-h-[calc(100vh-64px)] bg-gray-50 p-4 flex flex-col lg:flex-row gap-4 justify-center items-start lg:items-center">
+      <Card className="w-full max-w-md shadow-lg rounded-lg">
+        <CardHeader className="text-center pb-4">
+          <div className="flex justify-center mb-4">
+            <Avatar className="h-24 w-24 border-4 border-purple-500 shadow-md">
+              <AvatarImage src={userProfile.avatarUrl} alt={userProfile.name} />
+              <AvatarFallback>{userProfile.name.charAt(0)}</AvatarFallback>
+            </Avatar>
+          </div>
+          <CardTitle className="text-2xl font-bold text-gray-800">
+            {userProfile.name}
+          </CardTitle>
+          <CardDescription className="text-gray-600 flex items-center justify-center mt-1">
+            <Mail className="h-4 w-4 mr-2 text-gray-500" /> {userProfile.email}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <Separator />
+          <div>
+            <Link href="/admin-dashboard/settings">
+              <Button
+                variant="outline"
+                className="w-full flex items-center justify-start text-lg py-6 cursor-pointer"
+              >
+                <Lock className="mr-3 h-5 w-5" /> Change Password
+              </Button>
+            </Link>
+          </div>
+          <div>
+            <Link href="/admin-dashboard/orders">
+              <Button
+                variant="outline"
+                className="w-full flex items-center justify-start text-lg py-6 cursor-pointer"
+              >
+                <LucideImg className="mr-3 h-5 w-5" /> Change Avatar
+              </Button>
+            </Link>
+          </div>
+          <div>
+            <Link href="/admin-dashboard/orders">
+              <Button
+                variant="outline"
+                className="w-full flex items-center justify-start text-lg py-6 cursor-pointer"
+              >
+                <ShoppingCart className="mr-3 h-5 w-5" /> View All Orders
+              </Button>
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Statistics Cards Section */}
+      <div className="w-full max-w-md lg:max-w-lg grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+        {/* Total Pending Orders Card */}
+        <Card className="shadow-lg rounded-lg p-4">
+          <CardHeader className="pb-2">
+            <CardDescription>Total Pending Orders</CardDescription>
+            <CardTitle className="text-2xl">15</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-xs text-gray-500">Orders awaiting processing</p>
+          </CardContent>
+        </Card>
+
+        {/* Total Completed Orders Card */}
+        <Card className="shadow-lg rounded-lg p-4">
+          <CardHeader className="pb-2">
+            <CardDescription>Total Completed Orders</CardDescription>
+            <CardTitle className="text-2xl">120</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-xs text-gray-500">
+              Orders successfully delivered
+            </p>
+          </CardContent>
+        </Card>
+
+        {/* Total Income Card */}
+        <Card className="shadow-lg rounded-lg p-4 md:col-span-2 lg:col-span-2">
+          <CardHeader className="pb-2">
+            <CardDescription>Total Income</CardDescription>
+            <CardTitle className="text-2xl">$15,000</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-xs text-gray-500">Overall earnings</p>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+};
 
 export default ProfilePage;
