@@ -146,7 +146,7 @@ const UserManagement = () => {
                         <DropdownMenuItem
                           onClick={() =>
                             router.push(
-                              `/admin-dashboard/change-role?userId=${user._id}`
+                              `/admin-management/change-role?userId=${user._id}`
                             )
                           }
                         >
@@ -202,11 +202,11 @@ const UserManagement = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  // onClick={() =>
-                  //   router.push(
-                  //     `/admin-dashboard/change-role?userId=${user._id}`
-                  //   )
-                  // }
+                  onClick={() =>
+                    router.push(
+                      `/admin-management/change-role?userId=${user._id}`
+                    )
+                  }
                 >
                   Change Role
                 </Button>

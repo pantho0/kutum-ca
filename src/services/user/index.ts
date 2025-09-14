@@ -58,3 +58,20 @@ export const changeUserStatus = async (id: string) => {
     );
   }
 };
+
+export const changeUserRole = async (userRoleInfo: any) => {
+  try {
+    const response = await axiosInstance.patch(
+      `/users/change-role`,
+      userRoleInfo
+    );
+    if (!response.data.success) {
+      throw new Error(response.data.message || "Error changing user role");
+    }
+    return response.data;
+  } catch (error: any) {
+    throw new Error(
+      error.response?.data?.message || error.message || "Error fetching data"
+    );
+  }
+};
