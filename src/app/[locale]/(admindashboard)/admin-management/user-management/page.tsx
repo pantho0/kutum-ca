@@ -23,125 +23,29 @@ import { MoreHorizontal } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { useGetAllUser } from "@/hooks/user.hook";
+import { useChangeUserStatus, useGetAllUser } from "@/hooks/user.hook";
 import Link from "next/link";
 
 const UserManagement = () => {
   const router = useRouter();
 
   const { data, isLoading, isError } = useGetAllUser();
-  console.log(data);
+  const { mutate: changeUserStatus } = useChangeUserStatus();
 
   const users = data?.data;
 
-  // const changeUserBlockStatus = (id: string) => {
-  //   const swalWithBootstrapButtons = Swal.mixin({
-  //     customClass: {
-  //       confirmButton: "bg-red-500 p-2 ml-2 text-white rounded-sm",
-  //       cancelButton: "bg-gray-500 p-2 text-white rounded-sm",
-  //     },
-  //     background: "#000",
-  //     color: "#fff",
-  //     buttonsStyling: false,
-  //   });
-  //   swalWithBootstrapButtons
-  //     .fire({
-  //       title: "Are you sure you want to change this user's block status?",
-  //       text: "You won't be able to revert this!",
-  //       icon: "warning",
-  //       showCancelButton: true,
-  //       confirmButtonText: "Yes",
-  //       cancelButtonText: "No",
-  //       reverseButtons: true,
-  //     })
-  //     .then((result) => {
-  //       if (result.isConfirmed) {
-  //         const toastId = toast.loading("Changing user status");
-  //         changeIsBlock(
-  //           { id: id },
-  //           {
-  //             onSuccess: () => {
-  //               toast.success("User block status updated", { id: toastId });
-  //             },
-  //             onError: () => {
-  //               toast.error("Failed to change user status", { id: toastId });
-  //             },
-  //           }
-  //         );
-
-  //         swalWithBootstrapButtons.fire({
-  //           background: "#000",
-  //           color: "#fff",
-  //           title: "Block Status Changed!",
-  //           text: "User block status has been updated.",
-  //           icon: "success",
-  //         });
-  //       } else if (
-  //         /* Read more about handling dismissals below */
-  //         result.dismiss === Swal.DismissReason.cancel
-  //       ) {
-  //         swalWithBootstrapButtons.fire({
-  //           title: "Cancelled",
-  //           text: "Your imaginary file is safe :)",
-  //           icon: "error",
-  //         });
-  //       }
-  //     });
-  // };
-
-  // const changeDeleteStatus = (id: string) => {
-  //   const swalWithBootstrapButtons = Swal.mixin({
-  //     customClass: {
-  //       confirmButton: "bg-red-500 p-2 ml-2 text-white rounded-sm",
-  //       cancelButton: "bg-gray-500 p-2 text-white rounded-sm",
-  //     },
-  //     background: "#000",
-  //     color: "#fff",
-  //     buttonsStyling: false,
-  //   });
-  //   swalWithBootstrapButtons
-  //     .fire({
-  //       title: "Are you sure you want to change this user's delete status?",
-  //       text: "You won't be able to revert this!",
-  //       icon: "warning",
-  //       showCancelButton: true,
-  //       confirmButtonText: "Yes",
-  //       cancelButtonText: "No",
-  //       reverseButtons: true,
-  //     })
-  //     .then((result) => {
-  //       if (result.isConfirmed) {
-  //         const toastId = toast.loading("Changing user status");
-  //         deleteUser(
-  //           { id: id },
-  //           {
-  //             onSuccess: () => {
-  //               toast.success("User delete status updated", { id: toastId });
-  //             },
-  //             onError: () => {
-  //               toast.error("Failed to change user status", { id: toastId });
-  //             },
-  //           }
-  //         );
-  //         swalWithBootstrapButtons.fire({
-  //           background: "#000",
-  //           color: "#fff",
-  //           title: "Delete Status Changed!",
-  //           text: "User delete status has been updated.",
-  //           icon: "success",
-  //         });
-  //       } else if (
-  //         /* Read more about handling dismissals below */
-  //         result.dismiss === Swal.DismissReason.cancel
-  //       ) {
-  //         swalWithBootstrapButtons.fire({
-  //           title: "Cancelled",
-  //           text: "Your imaginary file is safe :)",
-  //           icon: "error",
-  //         });
-  //       }
-  //     });
-  // };
+  const changeDeleteStatus = (id: string) => {
+    console.log(id);
+    const toastId = toast.loading("Updating User Delete Status...");
+    changeUserStatus(id, {
+      onSuccess: () => {
+        toast.success("User delete status updated", { id: toastId });
+      },
+      onError: () => {
+        toast.error("Failed to change user delete status", { id: toastId });
+      },
+    });
+  };
 
   if (isLoading) {
     return (
@@ -233,7 +137,7 @@ const UserManagement = () => {
                       <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem
-                        // onClick={() => changeUserBlockStatus(user._id)}
+                          onClick={() => changeDeleteStatus(user._id)}
                         >
                           {user.isDeleted ? "Restore User" : "Delete User"}
                         </DropdownMenuItem>
@@ -291,7 +195,7 @@ const UserManagement = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  // onClick={() => changeDeleteStatus(user._id)}
+                  onClick={() => changeDeleteStatus(user._id)}
                 >
                   {user.isDeleted ? "Restore User" : "Delete User"}
                 </Button>

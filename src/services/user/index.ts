@@ -1,6 +1,7 @@
 "use server";
 
 import axiosInstance from "@/lib/AxiosInstance";
+import { revalidateTag } from "next/cache";
 
 export const getAllUser = async () => {
   try {
@@ -32,7 +33,7 @@ export const addUser = async (user: any) => {
 
 export const changeUserStatus = async (id: string) => {
   try {
-    const response = await axiosInstance.put(`/users/delete-user`, { id });
+    const response = await axiosInstance.patch(`/users/delete-user`, { id });
     if (!response.data.success) {
       throw new Error(response.data.message || "Error changing user status");
     }
