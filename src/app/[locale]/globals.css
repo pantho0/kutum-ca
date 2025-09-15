@@ -137,6 +137,12 @@ body {
 }
 
 @layer components {
+  /* Remove focus ring for form elements */
+  input:focus, textarea:focus, select:focus {
+    --tw-ring-color: transparent !important;
+    outline: none;
+  }
+
   .custom-animation {
     @apply opacity-0;
   }
