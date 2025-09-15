@@ -11,6 +11,8 @@ import CustomForm from "@/components/customform/CustomForm";
 import { FieldValues, SubmitErrorHandler } from "react-hook-form";
 import CustomInput from "@/components/customform/CustomInput";
 import CustomSelect from "@/components/customform/CustomSelect";
+import { useCreateReservation } from "@/hooks/reservations.hook";
+import { toast } from "sonner";
 
 // Register ScrollTrigger globally once
 if (typeof window !== "undefined") {
@@ -19,6 +21,7 @@ if (typeof window !== "undefined") {
 
 const Reservation = () => {
   const container = useRef(null);
+  const { mutate: createReservation } = useCreateReservation();
 
   useGSAP(
     () => {
@@ -54,7 +57,15 @@ const Reservation = () => {
   );
 
   const onSubmit: SubmitErrorHandler<FieldValues> = (data) => {
-    console.log(data);
+    const toastId = toast.loading("Creating Reservation...");
+    createReservation(data, {
+      onSuccess: () => {
+        toast.success("Reservation created successfully", { id: toastId });
+      },
+      onError: () => {
+        toast.error("Failed to create reservation", { id: toastId });
+      },
+    });
   };
 
   return (
@@ -172,7 +183,7 @@ const Reservation = () => {
             <div className="lg:col-span-3 flex justify-center form-field">
               <Button
                 type="submit"
-                className="bg-primary px-10 py-7 text-base text-black hover:bg-secondary hover:border hover:border-primary rounded-none hover:text-foreground w-full md:w-auto"
+                className="bg-primary px-10 py-7 text-base text-black hover:bg-primary/80 hover:border hover:border-primary rounded-none hover:text-white cursor-pointer w-full md:w-auto"
               >
                 Book Now
               </Button>

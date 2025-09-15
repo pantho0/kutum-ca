@@ -33,3 +33,20 @@ export const updatReservationStatus = async (reservationData: any) => {
     );
   }
 };
+
+export const createReservation = async (reservationData: any) => {
+  try {
+    const res = await axiosInstance.post(
+      "/reservations/create-reservation",
+      reservationData
+    );
+    if (!res.data.success) {
+      throw new Error(res.data.message || "Error creating reservation");
+    }
+    return res.data;
+  } catch (error: any) {
+    throw new Error(
+      error.response?.data?.message || error.message || "Error fetching data"
+    );
+  }
+};

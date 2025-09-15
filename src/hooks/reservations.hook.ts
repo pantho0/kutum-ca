@@ -1,9 +1,22 @@
 import {
+  createReservation,
   getAllReservations,
   updatReservationStatus,
 } from "@/services/Reservations";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+
+export const useCreateReservation = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationKey: ["reservation"],
+    mutationFn: async (reservationData: any) =>
+      await createReservation(reservationData),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["reservation"] });
+    },
+  });
+};
 
 export const useGetAllReservations = () => {
   return useMutation({
