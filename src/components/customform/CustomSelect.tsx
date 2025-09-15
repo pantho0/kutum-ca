@@ -41,7 +41,7 @@ function CustomSelect({
 
   return (
     <FormItem>
-      <FormLabel className="font-sans text-black">{label}</FormLabel>
+      <FormLabel className="font-sans">{label}</FormLabel>
       <Controller
         name={name}
         control={control}

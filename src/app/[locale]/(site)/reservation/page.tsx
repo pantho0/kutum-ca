@@ -1,20 +1,16 @@
 "use client";
 import React, { useRef } from "react";
-import { Star, User, Mail, Phone } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 // GSAP Imports
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CustomForm from "@/components/customform/CustomForm";
+import { FieldValues, SubmitErrorHandler } from "react-hook-form";
+import CustomInput from "@/components/customform/CustomInput";
+import CustomSelect from "@/components/customform/CustomSelect";
 
 // Register ScrollTrigger globally once
 if (typeof window !== "undefined") {
@@ -57,6 +53,10 @@ const Reservation = () => {
     { scope: container }
   );
 
+  const onSubmit: SubmitErrorHandler<FieldValues> = (data) => {
+    console.log(data);
+  };
+
   return (
     <section
       ref={container}
@@ -68,20 +68,20 @@ const Reservation = () => {
         `, // Replace with your background image path
       }}
     >
-      <div className="container mx-auto max-w-5xl px-5 text-center">
+      <div className="container mx-auto max-w-5xl px-5 text-left">
         {/* Header */}
         <div className="mb-12 reservation-header">
           <div className="flex items-center justify-center space-x-2 text-primary mb-4">
             <Star size={16} fill="currentColor" />
-            <h3 className="text-sm font-sans uppercase tracking-widest">
+            <h3 className="text-sm font-sans text-center uppercase tracking-widest">
               RESERVATION
             </h3>
             <Star size={16} fill="currentColor" />
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-elsie font-medium">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-elsie font-medium text-center">
             Book A Table
           </h1>
-          <p className="text-neutral-300 mt-4 text-lg">
+          <p className="text-neutral-300 mt-4 text-lg text-center">
             You can Call Us directly at{" "}
             <a href="tel:+12345678899" className="text-primary hover:underline">
               +01 (234) 567 8899
@@ -90,88 +90,95 @@ const Reservation = () => {
         </div>
 
         {/* Form */}
-        <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Name Input */}
-          <div className="relative form-field">
-            <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary" />
-            <Input
-              type="text"
-              placeholder="Name"
-              className="pl-12 py-7 bg-transparent border-0 border-b border-neutral-600 rounded-none focus:ring-0 focus:border-primary placeholder:text-neutral-400 text-lg"
-            />
-          </div>
 
-          {/* Email Input */}
-          <div className="relative form-field">
-            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary" />
-            <Input
-              type="email"
-              placeholder="Email Address"
-              className="pl-12 py-7 bg-transparent border-0 border-b border-neutral-600 rounded-none focus:ring-0 focus:border-primary placeholder:text-neutral-400 text-lg"
-            />
-          </div>
+        <CustomForm onSubmit={onSubmit}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Name Input */}
+            <div>
+              <CustomInput
+                type="text"
+                name="customerName"
+                placeholder="Name"
+                label="Name"
+                fontColor="text-white"
+              />
+            </div>
 
-          {/* Phone Input */}
-          <div className="relative form-field">
-            <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary" />
-            <Input
-              type="tel"
-              placeholder="Phone Number"
-              className="pl-12 py-7 bg-transparent border-0 border-b border-neutral-600 rounded-none focus:ring-0 focus:border-primary placeholder:text-neutral-400 text-lg"
-            />
-          </div>
+            {/* Email Input */}
+            <div>
+              <CustomInput
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                label="Email Address"
+                fontColor="text-white"
+              />
+            </div>
 
-          {/* Persons Select */}
-          <div className="form-field">
-            <Select>
-              <SelectTrigger className="w-full py-7 bg-transparent border-0 border-b border-neutral-600 rounded-none focus:ring-0 focus:border-primary text-neutral-400 text-lg">
-                <SelectValue placeholder="1 Person" />
-              </SelectTrigger>
-              <SelectContent className="bg-black border-neutral-700 text-white">
-                <SelectItem value="1">1 Person</SelectItem>
-                <SelectItem value="2">2 Persons</SelectItem>
-                <SelectItem value="3">3 Persons</SelectItem>
-                <SelectItem value="4">4 Persons</SelectItem>
-                <SelectItem value="5+">5+ Persons</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+            {/* Phone Input */}
+            <div>
+              <CustomInput
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                label="Phone Number"
+                fontColor="text-white"
+              />
+            </div>
 
-          {/* Date Input */}
-          <div className="relative form-field">
-            <Input
-              type="text"
-              placeholder="dd/mm/yy"
-              className="py-7 bg-transparent border-0 border-b border-neutral-600 rounded-none focus:ring-0 focus:border-primary placeholder:text-neutral-400 text-lg text-center"
-            />
-          </div>
+            {/* Persons Select */}
+            <div className="text-white">
+              <CustomSelect
+                name="headCount"
+                label="Persons"
+                options={[
+                  { value: "1", label: "1" },
+                  { value: "2", label: "2" },
+                  { value: "3", label: "3" },
+                  { value: "4", label: "4" },
+                  { value: "5", label: "5" },
+                  { value: "6", label: "6" },
+                  { value: "7", label: "7" },
+                  { value: "8", label: "8" },
+                  { value: "9", label: "9" },
+                  { value: "10", label: "10" },
+                ]}
+              />
+            </div>
 
-          {/* Time Select */}
-          <div className="form-field">
-            <Select>
-              <SelectTrigger className="w-full py-7 bg-transparent border-0 border-b border-neutral-600 rounded-none focus:ring-0 focus:border-primary text-neutral-400 text-lg">
-                <SelectValue placeholder="08:00 am" />
-              </SelectTrigger>
-              <SelectContent className="bg-black border-neutral-700 text-white">
-                <SelectItem value="08:00">08:00 am</SelectItem>
-                <SelectItem value="09:00">09:00 am</SelectItem>
-                <SelectItem value="10:00">10:00 am</SelectItem>
-                <SelectItem value="11:00">11:00 am</SelectItem>
-                <SelectItem value="12:00">12:00 pm</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+            {/* Date Input */}
+            <div>
+              <CustomInput
+                type="date"
+                name="date"
+                placeholder="Date"
+                label="Date"
+                fontColor="text-white"
+              />
+            </div>
 
-          {/* Submit Button */}
-          <div className="lg:col-span-3 flex justify-center form-field">
-            <Button
-              type="submit"
-              className="bg-primary px-10 py-7 text-base text-black hover:bg-secondary hover:border hover:border-primary rounded-none hover:text-foreground w-full md:w-auto"
-            >
-              Book Now
-            </Button>
+            {/* Time Select */}
+            <div>
+              <CustomInput
+                type="time"
+                name="time"
+                placeholder="Time"
+                label="Time"
+                fontColor="text-white"
+              />
+            </div>
+
+            {/* Submit Button */}
+            <div className="lg:col-span-3 flex justify-center form-field">
+              <Button
+                type="submit"
+                className="bg-primary px-10 py-7 text-base text-black hover:bg-secondary hover:border hover:border-primary rounded-none hover:text-foreground w-full md:w-auto"
+              >
+                Book Now
+              </Button>
+            </div>
           </div>
-        </form>
+        </CustomForm>
       </div>
     </section>
   );
