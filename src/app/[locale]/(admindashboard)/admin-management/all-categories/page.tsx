@@ -14,7 +14,7 @@ import { useGetCategory } from "@/hooks/category.hook";
 import React from "react";
 
 function AllCategoriesPage() {
-  const { data: categories, isLoading, isError } = useGetCategory();
+  const { data: categories } = useGetCategory();
   const categoriesData = categories?.data;
   return (
     <div className="text-black font-sans px-4 sm:px-6 lg:px-8 py-6 max-w-7xl mx-auto">

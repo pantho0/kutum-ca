@@ -54,6 +54,7 @@ function CustomSelect({
                 onValueChange(value);
               }
             }}
+            defaultValue={defaultValue}
             disabled={disabled}
           >
             <SelectTrigger className="w-full">

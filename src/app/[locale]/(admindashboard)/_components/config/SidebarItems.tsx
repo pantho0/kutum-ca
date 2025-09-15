@@ -6,14 +6,7 @@ import {
   Trash,
   Utensils,
 } from "lucide-react";
-import {
-  FileText,
-  HelpCircle,
-  BookCheck,
-  User,
-  Settings,
-  UserCog,
-} from "lucide-react";
+import { FileText, HelpCircle, BookCheck, User, UserCog } from "lucide-react";
 
 export interface NavItem {
   href: string;

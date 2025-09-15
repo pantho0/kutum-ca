@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import { Star, User, Mail, Phone, ChevronDown } from "lucide-react";
+import { Star, User, Mail, Phone } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {

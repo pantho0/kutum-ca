@@ -10,8 +10,8 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useUser } from "@/context/user.provider";
-import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { Image as LucideImg, Lock, Mail, ShoppingCart } from "lucide-react";
+import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
+import { Image as LucideImg, Lock, Mail } from "lucide-react";
 import Link from "next/link";
 
 export interface IUserProfile {

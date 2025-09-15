@@ -2,7 +2,6 @@
 import React, { useRef } from "react";
 import { Soup, Star, Store } from "lucide-react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import restaurant from "../../../../public/images/restaurant.png";
 import food from "../../../../public/images/food1.jpg";
 

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { IMenu } from "@/interface";
 import {
   addMenuItem,
