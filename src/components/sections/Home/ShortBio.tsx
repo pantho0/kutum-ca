@@ -28,9 +28,13 @@ const ShortBio = () => {
           toggleActions: "play pause resume reset",
         },
       });
+      // Use viewport units for animation values to prevent overflow
+      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      const moveDistance = Math.min(100, vw * 0.2); // Use 20% of viewport width or 100px, whichever is smaller
+      
       tl.from(".bio-image-1", {
         opacity: 0,
-        x: -100,
+        x: -moveDistance,
         delay: 0.3,
         ease: "power1.inOut",
       });
@@ -38,7 +42,7 @@ const ShortBio = () => {
         ".bio-image-2",
         {
           opacity: 0,
-          x: 200,
+          x: moveDistance * 1.5, // Slightly more movement for the second image
           delay: 0.4,
           ease: "power1.inOut",
         },
@@ -51,12 +55,12 @@ const ShortBio = () => {
   return (
     <section
       ref={container}
-      className="container mx-auto px-5 md:px-0 max-w-6xl grid grid-cols-1 items-center gap-12 py-3 text-white lg:grid-cols-2 lg:gap-20 lg:py-28 bio-animation"
+      className="container mx-auto px-5 md:px-0 max-w-6xl grid grid-cols-1 items-center gap-12 py-3 text-white lg:grid-cols-2 lg:gap-20 lg:py-28 bio-animation overflow-x-hidden"
     >
       {/* Left Column: Image Composition */}
       <div className="relative h-[550px] w-full sm:h-[650px] lg:h-[600px]">
         {/* Image-1 */}
-        <div className="absolute left-0 top-0 h-2/5 w-2/3 transform transition-transform duration-500 hover:scale-105">
+        <div className="absolute left-0 top-0 h-2/5 w-2/3 transform transition-transform duration-500 hover:scale-105 max-w-full">
           <Image
             src={img1}
             alt="A delicious gourmet burger with cheese and lettuce"
@@ -67,7 +71,7 @@ const ShortBio = () => {
         </div>
 
         {/* Image-2*/}
-        <div className="absolute bottom-0 right-0 h-4/5 w-4/5 transform transition-transform duration-500 hover:scale-105">
+        <div className="absolute bottom-0 right-0 h-4/5 w-4/5 transform transition-transform duration-500 hover:scale-105 max-w-full">
           <Image
             src={img2}
             alt="A chef carefully preparing fresh lettuce on a wooden board"
