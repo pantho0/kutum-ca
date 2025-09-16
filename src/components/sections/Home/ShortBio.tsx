@@ -80,7 +80,7 @@ const ShortBio = () => {
 
       {/* Right Column: Text Content */}
       <div className="mt-40 md:mt-0 flex flex-col justify-center space-y-7">
-        <div className="flex items-center space-x-2 text-green-800">
+        <div className="flex items-center space-x-2 text-primary">
           <Star size={18} fill="currentColor" />
           <h3 className="text-sm font-sans uppercase md:text-2xl">
             {t("SectionTitle")}
@@ -88,23 +88,25 @@ const ShortBio = () => {
           <Star size={18} fill="currentColor" />
         </div>
 
-        <h2 className="text-4xl font-elsie font-bold text-green-800 leading-tight sm:text-5xl lg:text-6xl">
+        <h2 className="text-4xl font-elsie font-bold text-primary leading-tight sm:text-5xl lg:text-6xl">
           {t("Title")}
         </h2>
 
-        <p className="text-gray-500 md:text-lg font-sans">{t("Description")}</p>
+        <p className="text-secondary md:text-lg font-sans">
+          {t("Description")}
+        </p>
 
         <div className="space-y-6 pt-4">
           {/* Feature 1: Quiet Environment */}
           <div className="flex items-start space-x-4">
             <div className="flex-shrink-0 rounded-full border border-neutral-700 p-3">
-              <Store className="text-green-800 size-20" strokeWidth={1.5} />
+              <Store className="text-primary size-20" strokeWidth={1.5} />
             </div>
             <div>
-              <h4 className="text-3xl font-elsie text-green-800 font-bold">
+              <h4 className="text-3xl font-elsie text-primary font-bold">
                 {t("point1")}
               </h4>
-              <p className="mt-1 text-gray-500 text-lg">
+              <p className="mt-1 text-secondary text-lg">
                 {t("point1Description")}
               </p>
             </div>
@@ -113,13 +115,13 @@ const ShortBio = () => {
           {/* Feature 2: Hygienic Food */}
           <div className="flex items-start space-x-4">
             <div className="flex-shrink-0 rounded-full border border-neutral-700 p-3">
-              <Soup className="text-green-800 size-20" strokeWidth={1.5} />
+              <Soup className="text-primary size-20" strokeWidth={1.5} />
             </div>
             <div>
-              <h4 className="text-3xl font-elsie text-green-800 font-bold">
+              <h4 className="text-3xl font-elsie text-primary font-bold">
                 {t("point2")}
               </h4>
-              <p className="mt-1 text-gray-500 text-lg">
+              <p className="mt-1 text-secondary text-lg">
                 {t("point2Description")}
               </p>
             </div>
@@ -127,7 +129,7 @@ const ShortBio = () => {
         </div>
 
         <div className="pt-2 flex justify-center md:justify-start">
-          <Button className="bg-green-800 text-white px-8 py-8 text-base hover:bg-green-800/80 hover:border-1  rounded-none hover:cursor-pointer">
+          <Button className="bg-primary text-white px-8 py-8 text-base hover:bg-primary/80 hover:border-1  rounded-none hover:cursor-pointer">
             <Link href="/about">{t("ExploreUs")}s</Link>
           </Button>
         </div>

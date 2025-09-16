@@ -57,7 +57,7 @@ function AddItemPage() {
   };
   return (
     <div className="text-black font-sans px-4 sm:px-6 lg:px-8 py-6 max-w-7xl mx-auto">
-      <div className="border-l-8 border-green-700 pl-2 sm:pl-4">
+      <div className="border-l-8 border-primary pl-2 sm:pl-4">
         <h2 className="text-black font-bold text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8">
           Add Menu Item
         </h2>
@@ -123,7 +123,7 @@ function AddItemPage() {
                   <span className="mb-1 font-medium sm:text-base">
                     Click to upload or drag and drop
                   </span>
-                  <span className="text-xs sm:text-sm text-gray-500">
+                  <span className="text-xs sm:text-sm text-secondary">
                     PNG, JPG, GIF up to 5MB
                   </span>
                   <input
@@ -150,7 +150,7 @@ function AddItemPage() {
           <div className="w-full px-2">
             <Button
               type="submit"
-              className="w-full cursor-pointer bg-green-800 hover:bg-green-800/90"
+              className="w-full cursor-pointer bg-primary hover:bg-primary/90"
               disabled={isPending}
             >
               Add Menu Item

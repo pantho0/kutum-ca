@@ -66,7 +66,7 @@ const Banner = () => {
       <div className="container mx-auto  min-h-screen max-w-6xl items-center px-4 py-10 lg:px-8 space-y-6 relative overflow-hidden">
         <div>
           <h2
-            className={`font-elsie w-full md:w-[90%] z-50 title-animation text-green-800 ${
+            className={`font-elsie w-full md:w-[90%] z-50 title-animation text-primary ${
               locale === "fr"
                 ? "md:text-7xl md:text-center lg:text-left text-[28px] text-center"
                 : "md:text-8xl md:text-center lg:text-left text-4xl text-center"
@@ -76,7 +76,7 @@ const Banner = () => {
           </h2>
         </div>
         <div className="flex flex-col lg:flex-row items-center space-y-6 md:space-y-0">
-          <div className="mr-4 hidden md:hidden lg:block h-2 w-26 bg-green-800"></div>
+          <div className="mr-4 hidden md:hidden lg:block h-2 w-26 bg-primary"></div>
           <div className="block md:block lg:hidden">
             <Image
               src={heroImg}
@@ -86,14 +86,14 @@ const Banner = () => {
               className="custom-animation relative z-0"
             />
           </div>
-          <p className="text-lg font-semibold font-sans text-center text-gray-500 md:text-center lg:text-left desc-animation lg:max-w-1/2">
+          <p className="text-lg font-semibold font-sans text-center text-primary md:text-center lg:text-left desc-animation lg:max-w-1/2">
             {t("BannerDescription")}
           </p>
         </div>
         <div className="flex justify-center md:justify-center lg:justify-start lg:ml-30">
           <Button
             size="lg"
-            className="md:text-left bg-green-800 text-white desc-animation lg:max-w-1/2 w-42 h-16 rounded-none  hover:cursor-pointer hover:bg-green-800/80"
+            className="md:text-left bg-primary text-white desc-animation lg:max-w-1/2 w-42 h-16 rounded-none  hover:cursor-pointer hover:bg-accent"
           >
             <Link href="/menu">Explore Menu</Link>
           </Button>

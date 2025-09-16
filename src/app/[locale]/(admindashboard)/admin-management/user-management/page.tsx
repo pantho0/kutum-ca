@@ -80,7 +80,7 @@ const UserManagement = () => {
 
   return (
     <div className="container mx-auto py-10 text-black">
-      <div className="border-l-8 border-green-700 pl-2 sm:pl-4">
+      <div className="border-l-8 border-primary pl-2 sm:pl-4">
         <h2 className="text-black font-bold text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8">
           User Management
         </h2>

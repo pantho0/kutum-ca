@@ -14,8 +14,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: #e5e4e2;
-  --color-foreground: #008000;
+  --color-background: #fff;
+  --color-foreground: #fff;
   --font-sans: "Lexend", sans-serif;
   --font-elsie: "Elsie", sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
@@ -39,10 +39,12 @@
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: #0b1315;
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: #ffde9f;
+  --accent: #693382;
+  --accent-foreground: #fff;
+  --color-secondary-foreground: #fff;
+  --color-secondary: #3E3F5B;
+  --color-primary-foreground: #fff;
+  --color-primary: #4F1C51;
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -61,14 +63,14 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
+  --primary: #4F1C51
+  --primary-foreground: #fff;
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --accent: #693382;
+  --accent-foreground: #fff;
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
@@ -95,8 +97,8 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --primary: #4F1C51;
+  --primary-foreground: #fff;
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
@@ -138,7 +140,9 @@ body {
 
 @layer components {
   /* Remove focus ring for form elements */
-  input:focus, textarea:focus, select:focus {
+  input:focus,
+  textarea:focus,
+  select:focus {
     --tw-ring-color: transparent !important;
     outline: none;
   }

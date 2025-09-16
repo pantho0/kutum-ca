@@ -46,29 +46,29 @@ export default function ReservationCard({
       </CardHeader>
       <CardContent className="p-4 space-y-3 text-sm">
         <div className="flex items-center gap-2">
-          <Mail className="w-4 h-4 text-gray-500" />
+          <Mail className="w-4 h-4 text-secondary" />
           <span>{email}</span>
         </div>
         <div className="flex items-center gap-2">
-          <Phone className="w-4 h-4 text-gray-500" />
+          <Phone className="w-4 h-4 text-secondary" />
           <span>{phone}</span>
         </div>
         <div className="flex items-center gap-2">
-          <Users className="w-4 h-4 text-gray-500" />
+          <Users className="w-4 h-4 text-secondary" />
           <span>{headCount} People</span>
         </div>
         <div className="flex items-center gap-2">
-          <CalendarDays className="w-4 h-4 text-gray-500" />
+          <CalendarDays className="w-4 h-4 text-secondary" />
           <span>{date}</span>
         </div>
         <div className="flex items-center gap-2">
-          <Clock className="w-4 h-4 text-gray-500" />
+          <Clock className="w-4 h-4 text-secondary" />
           <span>{time}</span>
         </div>
 
         {/* Status Dropdown */}
         <div className="pt-2">
-          <p className="text-xs text-gray-500 mb-1">Status</p>
+          <p className="text-xs text-secondary mb-1">Status</p>
           <Select defaultValue={status} onValueChange={onStatusChange}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select status" />

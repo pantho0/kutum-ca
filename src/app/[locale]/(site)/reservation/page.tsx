@@ -82,7 +82,7 @@ const Reservation = () => {
       <div className="container mx-auto max-w-5xl px-5 text-left">
         {/* Header */}
         <div className="mb-12 reservation-header">
-          <div className="flex items-center justify-center space-x-2 text-primary mb-4">
+          <div className="flex items-center justify-center space-x-2 text-white mb-4">
             <Star size={16} fill="currentColor" />
             <h3 className="text-sm font-sans text-center uppercase tracking-widest">
               RESERVATION
@@ -94,7 +94,7 @@ const Reservation = () => {
           </h1>
           <p className="text-neutral-300 mt-4 text-lg text-center">
             You can Call Us directly at{" "}
-            <a href="tel:+12345678899" className="text-primary hover:underline">
+            <a href="tel:+12345678899" className="text-white hover:underline">
               +01 (234) 567 8899
             </a>
           </p>
@@ -183,7 +183,7 @@ const Reservation = () => {
             <div className="lg:col-span-3 flex justify-center form-field">
               <Button
                 type="submit"
-                className="bg-primary px-10 py-7 text-base text-black hover:bg-primary/80 hover:border hover:border-primary rounded-none hover:text-white cursor-pointer w-full md:w-auto"
+                className="bg-primary px-10 py-7 text-base text-white hover:bg-primary/80 hover:border hover:border-primary rounded-none hover:text-white cursor-pointer w-full md:w-auto"
               >
                 Book Now
               </Button>

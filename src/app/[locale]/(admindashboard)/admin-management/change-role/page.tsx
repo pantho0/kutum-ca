@@ -147,7 +147,7 @@ const ChangeRoleContent = () => {
                     <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       First Name:
                     </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-secondary dark:text-gray-400">
                       {userInfo?.fullName?.toUpperCase()}
                     </p>
                   </div>
@@ -155,7 +155,7 @@ const ChangeRoleContent = () => {
                     <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       Email:
                     </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-secondary dark:text-gray-400">
                       {userInfo.email}
                     </p>
                   </div>
@@ -163,7 +163,7 @@ const ChangeRoleContent = () => {
                     <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       Current Role:
                     </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-secondary dark:text-gray-400">
                       {userInfo?.role?.toUpperCase()}
                     </p>
                   </div>

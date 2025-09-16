@@ -42,7 +42,7 @@ const ProfilePage: React.FC = () => {
             {userProfile.name}
           </CardTitle>
           <CardDescription className="text-gray-600 flex items-center justify-center mt-1">
-            <Mail className="h-4 w-4 mr-2 text-gray-500" /> {userProfile.email}
+            <Mail className="h-4 w-4 mr-2 text-secondary" /> {userProfile.email}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

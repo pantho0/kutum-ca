@@ -123,12 +123,12 @@ const Exceptional = () => {
             <div className="space-y-6 exceptional-hero">
               <div className="flex items-center space-x-2 text-primary">
                 <Star size={16} fill="currentColor" />
-                <h3 className="text-xl font-sans text-green-800 uppercase tracking-widest">
+                <h3 className="text-xl font-sans text-primary uppercase tracking-widest">
                   OUR RESTAURANT
                 </h3>
                 <Star size={16} fill="currentColor" />
               </div>
-              <h1 className="text-4xl text-green-800 sm:text-5xl lg:text-6xl font-elsie font-medium leading-tight">
+              <h1 className="text-4xl text-primary sm:text-5xl lg:text-6xl font-elsie font-medium leading-tight">
                 The Perfect Place For An Exceptional Experience
               </h1>
             </div>
@@ -136,13 +136,13 @@ const Exceptional = () => {
             {/* Quiet Environment Feature */}
             <div className="flex gap-8 quiet-environment-feature">
               <div className="flex-shrink-0 border-neutral-700 p-3">
-                <Store className="text-green-800 size-20" strokeWidth={1.5} />
+                <Store className="text-primary size-20" strokeWidth={1.5} />
               </div>
               <div className="space-y-2">
-                <h4 className="text-3xl text-green-800 font-elsie">
+                <h4 className="text-3xl text-primary font-elsie">
                   Quiet Environment
                 </h4>
-                <p className="text-gray-500 leading-relaxed text-lg">
+                <p className="text-secondary leading-relaxed text-lg">
                   Objectively transition virtual functionalities via
                   enterprise-wide benefits.
                 </p>
@@ -171,7 +171,7 @@ const Exceptional = () => {
 
           {/* Right Column */}
           <div className="flex flex-col space-y-10">
-            <p className="text-gray-500 leading-relaxed text-lg main-description-text">
+            <p className="text-secondary leading-relaxed text-lg main-description-text">
               Elementum, interdum arcu pulvinar vitae aenean arcu rutrum locus.
               Cursus phasellus tempus nunc netus. Non, viverra quisque commodo
               porttitor imperdiet pretium, congue.
@@ -187,13 +187,13 @@ const Exceptional = () => {
             {/* Hygienic Food Feature */}
             <div className="flex gap-8 hygienic-food-feature">
               <div className="flex-shrink-0 border-neutral-700 p-3">
-                <Soup className="text-green-800 size-20" strokeWidth={1.5} />
+                <Soup className="text-primary size-20" strokeWidth={1.5} />
               </div>
               <div className="space-y-2">
-                <h4 className="text-3xl text-green-800 font-elsie">
+                <h4 className="text-3xl text-primary font-elsie">
                   Hygienic Food
                 </h4>
-                <p className="text-gray-500 leading-relaxed text-lg">
+                <p className="text-secondary leading-relaxed text-lg">
                   Objectively transition virtual functionalities via
                   enterprise-wide benefits. Sagittis molestie nulla morbi
                   ultrices.

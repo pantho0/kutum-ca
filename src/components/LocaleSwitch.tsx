@@ -11,7 +11,7 @@ const LocaleSwitch = () => {
           <option
             key={cur}
             value={cur}
-            className="capitalize text-sm text-green-800"
+            className="capitalize text-sm text-primary"
           >
             {cur}
           </option>

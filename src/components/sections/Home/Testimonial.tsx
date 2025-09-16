@@ -44,7 +44,7 @@ const Testimonials = () => {
       {/* Content */}
       <div className="container mx-auto max-w-4xl px-5 text-center">
         {/* Section Title */}
-        <div className="flex items-center justify-center space-x-2 text-primary mb-4">
+        <div className="flex items-center justify-center space-x-2 text-white mb-4">
           <Star size={16} fill="currentColor" />
           <h3 className="text-xl font-sans uppercase tracking-widest">
             TESTIMONIALS
@@ -73,7 +73,7 @@ const Testimonials = () => {
                     <blockquote className="text-lg md:text-xl text-white font-elsie leading-relaxed max-w-3xl">
                       “{testimonial.quote}”
                     </blockquote>
-                    <cite className="text-lg font-elsie text-primary not-italic tracking-wider">
+                    <cite className="text-lg font-elsie text-white not-italic tracking-wider">
                       {testimonial.author}
                     </cite>
                   </div>
