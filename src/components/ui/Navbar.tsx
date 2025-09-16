@@ -23,7 +23,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-primary">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-primary">
       <div className="flex justify-between max-w-6xl mx-auto p-4 items-center">
         <div>
           <Image

@@ -4,7 +4,7 @@ import { Facebook, Twitter, Instagram, Youtube, Send } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import logo from "../../../public/images/logo.png";
+import logo2 from "../../../public/images/logo2.png";
 
 const Footer = () => {
   return (
@@ -16,7 +16,7 @@ const Footer = () => {
             <Image
               width={200}
               height={150}
-              src={logo}
+              src={logo2}
               alt="logo"
               className="md:w-[200px] w-[120px]"
             />
